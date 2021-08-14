@@ -15,6 +15,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FormsComponent } from './forms/forms.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { DepartamentoComponent } from './departamento/departamento.component';
 import {
   AgmCoreModule
 } from '@agm/core';

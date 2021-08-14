@@ -8,6 +8,7 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
 import { FormsComponent } from '../../forms/forms.component';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
+import { DepartamentoComponent } from './../../departamento/departamento.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
@@ -38,6 +39,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     FormsComponent,
     TableListComponent,
     NotificationsComponent,
+    DepartamentoComponent,
   ]
 })
 
