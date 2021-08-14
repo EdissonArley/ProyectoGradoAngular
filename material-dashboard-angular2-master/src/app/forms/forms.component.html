@@ -1,0 +1,282 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-lg-11 col-md-10">
+            <div class="card">
+              <div class="card-header card-header-tabs card-header-danger">
+                <div class="nav-tabs-navigation">
+                  <h4 class="card-title">PROGRAMA INTERNACIONAL DE MOVILIDAD ESTUDIANTIL SALIENTE</h4>
+                  <div class="nav-tabs-wrapper">
+                    <span class="nav-tabs-title"> </span>
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                      <li class="nav-item">
+                        <a mat-button class="nav-link active" href="#profile" data-toggle="tab">
+                          <em class="material-icons">bug_report</em> DATOS PERSONALES
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a mat-button class="nav-link" href="#infoAcademica" data-toggle="tab">
+                          <em class="material-icons">code</em> INFORMACION ACADEMICA
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a mat-button class="nav-link" href="#settings" data-toggle="tab">
+                          <i class="material-icons">cloud</i> INFORMACIÓN MOVILIDAD INTERNACIONAL
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="profile">
+                    <div class="card-body">
+                      <form>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Nombre completo" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Apellidos" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Nacionalidad" type="text">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Documento de identificación" type="number">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                              <mat-label>Fecha de nacimiento</mat-label>
+                              <input matInput [matDatepicker]="picker">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field>
+                              <mat-select placeholder="Sexo" [(ngModel)]="selectedState" name="state">
+                                <mat-option>Masculino</mat-option>
+                                <mat-option>Femenino</mat-option>
+                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
+                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Tipo de sangre" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-2">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="RH" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Dirección de residencia" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Teléfono" type="number">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Estado civil" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="N Pasaporte" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Celular" type="number">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="En caso de emergencia llamar a" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Teléfono Acudiente" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Parentesco" type="password">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right">Cargar</button>
+                        <div class="clearfix"></div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="infoAcademica">
+                    <div class="card-body">
+                      <form>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field>
+                              <mat-select placeholder="Facultad" [(ngModel)]="selectedState" name="state">
+                                <mat-option>Ingeniería de software</mat-option>
+                                <mat-option>Bibliotecológia</mat-option>
+                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
+                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Código" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field>
+                              <mat-select placeholder="Programa Academico" [(ngModel)]="selectedState" name="state">
+                                <mat-option>Ingeniería de software</mat-option>
+                                <mat-option>Bibliotecológia</mat-option>
+                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
+                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Sem. Académico" type="password">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Jornada" type="password">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field>
+                              <mat-select placeholder="Estado" [(ngModel)]="selectedState" name="state">
+                                <mat-option>Activo</mat-option>
+                                <mat-option>Inactivo</mat-option>
+                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
+                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Promedio Acumulado" type="password">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Idiomas" type="password">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right">Cargar</button>
+                        <div class="clearfix"></div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="settings">
+                    <div class="card-body">
+                      <form>
+                        <div class="row">
+                          <div class="col-md-8">
+                            <mat-form-field class="example-full-width">
+                              <input matInput
+                                placeholder="Institución en el exterior en donde desarrollará la actividad" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Pais" type="text">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field>
+                              <mat-select placeholder="Ciudad" [(ngModel)]="selectedState" name="state">
+                                <mat-option>Bogotá</mat-option>
+                                <mat-option>Cartagena</mat-option>
+                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
+                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                              <mat-label>Fecha Salida</mat-label>
+                              <input matInput [matDatepicker]="outPicker">
+                              <mat-datepicker-toggle matSuffix [for]="outPicker"></mat-datepicker-toggle>
+                              <mat-datepicker #outPicker></mat-datepicker>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                              <mat-label>Fecha Regreso</mat-label>
+                              <input matInput [matDatepicker]="inPicker">
+                              <mat-datepicker-toggle matSuffix [for]="inPicker"></mat-datepicker-toggle>
+                              <mat-datepicker #inPicker></mat-datepicker>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Duración del programa" type="text">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Fuente de financiación" type="text">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right">Cargar</button>
+                        <div class="clearfix"></div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
