@@ -1,6 +1,31 @@
+<div class="main-content" *ngIf = "departamento != null">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="">
+                        <br>
+                        <br>
+                        <br>
+                        <p>Fuera del for!</p>
+                        <div *ngFor="let Departamento of departamentos">
+                            <p>prueba 1 departamentos!</p>
+                            <p>{{Departamento.nombre}}</p>
+                        </div>
 
-<p>Fuera del for!</p>
-<div *ngFor="let Departamento of departamentos">
-    <p>{{Departamento.nombre}}</p>
-    <p>prueba 1 departamentos!</p>
+                        <p>prueba by ID !</p>
+                        <p>{{departamento.nombre}}</p>
+
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Nombre departamento" [(ngModel)]="nombreDepartamento" type="text">
+                            </mat-form-field>
+                        </div>
+                        <button (click)="crearDepartamento()" mat-raised-button type="button"
+                            class="btn btn-danger pull-right">crearDepartamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

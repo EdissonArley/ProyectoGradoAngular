@@ -14,4 +14,12 @@ export class DepartamentoService {
   traerDepartamento(): Observable<Departamento[]>{
     return this.httpClient.get<Departamento[]>(this.url)
 }
+
+  traerDepartamentoById(idDepartamento : number): Observable<Departamento>{
+  return this.httpClient.get<Departamento>(this.url + "/" + idDepartamento)
+}
+
+  crearDepartamento(departamento : Departamento): Observable<Departamento>{
+  return this.httpClient.post<Departamento>(this.url,departamento)
+}
 }
