@@ -1,5 +1,5 @@
 import { UserProfileService } from './../service/user-profile.service';
-import { Usuario } from './../model/usuario';
+import { Usuario } from 'app/model/usuario';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  usuarios : Usuario[];
+  usuario : Usuario;
+  
   constructor(private userProfileService:UserProfileService) { }
 
   ngOnInit(): void {
-    this.userProfileService.traerUsuario().subscribe(e=> this.usuarios = e);
+    this.userProfileService.traerUsuarioById(1).subscribe(e=> 
+      {console.log(e);
+      this.usuario = e});
   }
 
 

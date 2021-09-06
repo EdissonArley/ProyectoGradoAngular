@@ -22,4 +22,5 @@ export class DepartamentoService {
   crearDepartamento(departamento : Departamento): Observable<Departamento>{
   return this.httpClient.post<Departamento>(this.url,departamento)
 }
+
 }

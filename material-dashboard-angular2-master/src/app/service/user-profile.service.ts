@@ -1,6 +1,6 @@
+import { Usuario } from './../model/usuario';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Usuario } from 'app/model/usuario';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,5 +13,9 @@ export class UserProfileService {
 
   traerUsuario(): Observable<Usuario[]>{
     return this.httpClient.get<Usuario[]>(this.url)
+}
+
+  traerUsuarioById(idUsuario : number): Observable<Usuario>{
+  return this.httpClient.get<Usuario>(this.url + "/" + idUsuario)
 }
 }
