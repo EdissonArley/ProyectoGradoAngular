@@ -13,7 +13,6 @@
                               <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Nombres" type="text">
-                                    
                                     <p>{{usuario.nombreUsuario}}</p>
                                   </mat-form-field>
                               </div>
@@ -26,6 +25,7 @@
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Contraseña plataforma" type="password">
+                                  <p>{{usuario.contrasena}}</p>
                                 </mat-form-field>
                             </div>
                           </div>
@@ -37,16 +37,19 @@
                                     <mat-option>Cédula Extranjeria</mat-option>
                                     <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"  #stateName>{{state.stateName}}</mat-option>
                                   </mat-select>
+                                  <p>{{queryByStudent.tipoDocumentoId}}</p>
                                 </mat-form-field> 
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Número de documento" type="text">
+                                  <p>{{usuario.documento}}</p>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Correo Electrónico" type="email">
+                                  <p>{{usuario.correo}}</p>
                                 </mat-form-field>
                               </div>
                           </div>
@@ -54,6 +57,7 @@
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Dirección Hogar" type="text">
+                                <p>{{usuario.direccion}}</p>
                               </mat-form-field>
                             </div>
                               <div class="col-md-4">
@@ -68,6 +72,7 @@
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Teléfono" type="number">
+                                  <p>{{usuario.telefono}}</p>
                                 </mat-form-field>
                               </div>
                           </div>
@@ -75,16 +80,19 @@
                             <div class="col-md-2">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Tipo de sangre" type="text">
+                                  <p>{{estudiante.tipoSangre}}</p>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-2">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="RH" type="text">
+                                  <p>{{estudiante.rh}}</p>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">
                               <mat-form-field class="example-full-width">
                                 <input matInput placeholder="N Pasaporte" type="text">
+                                <p>{{estudiante.numeroPasaporte}}</p>
                               </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -101,16 +109,19 @@
                               <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Nombre Acudiente" type="text">
+                                    <p>{{estudiante.nombreAcudiente}}</p>
                                   </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Teléfono Acudiente" type="text">
+                                    <p>{{estudiante.numeroAcudiente}}</p>
                                   </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Parentesco" type="password">
+                                  <p>{{estudiante.parentescoAcudiente}}</p>
                                 </mat-form-field>
                             </div>
                           </div>

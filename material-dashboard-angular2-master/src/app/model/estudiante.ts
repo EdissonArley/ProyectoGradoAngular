@@ -13,4 +13,5 @@ export class Estudiante {
     public conveniosInternacionales : ConveniosInternacionales;
     public usuario : Usuario;
     public programaAcademico : ProgramaAcademico;
+    public numeroAcudiente : String;
 }
