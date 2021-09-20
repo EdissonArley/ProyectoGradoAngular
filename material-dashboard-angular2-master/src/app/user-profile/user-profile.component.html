@@ -37,7 +37,7 @@
                                     <mat-option>Cédula Extranjeria</mat-option>
                                     <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"  #stateName>{{state.stateName}}</mat-option>
                                   </mat-select>
-                                  <p>{{queryByStudent.tipoDocumentoId}}</p>
+                                  <p>{{queryByStudent.tipoDocumentoNombre}}</p>
                                 </mat-form-field> 
                               </div>
                               <div class="col-md-4">
@@ -67,6 +67,7 @@
                                     <mat-option>Cartagena</mat-option>
                                     <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"  #stateName>{{state.stateName}}</mat-option>
                                   </mat-select>
+                                  <p>{{queryByStudent.ciudadNombre}}</p>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
@@ -102,6 +103,7 @@
                                 <mat-option>Bibliotecológia</mat-option>
                                 <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"  #stateName>{{state.stateName}}</mat-option>
                               </mat-select>
+                              <p>{{queryByStudent.nombrePrograma}}</p>
                             </mat-form-field>
                         </div>
                       </div>

@@ -1,4 +1,6 @@
 export class QueryByStudent{
 
-    tipoDocumentoId : number
+    tipoDocumentoNombre : String;
+    ciudadNombre : String;
+    nombrePrograma : String;
 }

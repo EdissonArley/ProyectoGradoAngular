@@ -1,6 +1,5 @@
 import { QueryByStudent } from 'app/model/query-by-student';
 import { QueryByStudentService } from './../service/query-by-student.service';
-import { TipoDocumento } from './../model/tipo-documento';
 import { EstudianteService } from './../service/estudiante.service';
 import { UserProfileService } from './../service/user-profile.service';
 import { Usuario } from 'app/model/usuario';
@@ -16,7 +15,6 @@ export class UserProfileComponent implements OnInit {
 
   usuario : Usuario;
   estudiante : Estudiante;
-  tipoDocumento : TipoDocumento;
   queryByStudent: QueryByStudent;
 
   
