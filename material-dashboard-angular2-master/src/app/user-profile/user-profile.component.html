@@ -1,133 +1,136 @@
 <div class="main-content">
   <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-8">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title">Perfil estudiante</h4>
-                      <p class="card-category">Datos del estudiante...</p>
-                  </div>
-                  <div class="card-body">
-                      <form>
-                          <div class="row">
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Nombres" type="text">
-                                    <p>{{usuario.nombreUsuario}}</p>
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Apellidos" type="text">
-                                    <p>{{usuario.apellidoUsuario}}</p>
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Contraseña plataforma" type="password">
-                                  <p>{{usuario.contrasena}}</p>
-                                </mat-form-field>
-                            </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field>
-                                  <mat-select placeholder="Tipo Documento" [(ngModel)]="selectedState" name="state">
-                                    <mat-option>Cédula Ciudadania</mat-option>
-                                    <mat-option>Cédula Extranjeria</mat-option>
-                                    <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"  #stateName>{{state.stateName}}</mat-option>
-                                  </mat-select>
-                                  <p>{{queryByStudent.tipoDocumentoNombre}}</p>
-                                </mat-form-field> 
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Número de documento" type="text">
-                                  <p>{{usuario.documento}}</p>
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Correo Electrónico" type="email">
-                                  <p>{{usuario.correo}}</p>
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Dirección Hogar" type="text">
-                                <p>{{usuario.direccion}}</p>
-                              </mat-form-field>
-                            </div>
-                              <div class="col-md-4">
-                                <mat-form-field>
-                                  <mat-select placeholder="Ciudad" [(ngModel)]="selectedState" name="state">
-                                    <mat-option>Bogotá</mat-option>
-                                    <mat-option>Cartagena</mat-option>
-                                    <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"  #stateName>{{state.stateName}}</mat-option>
-                                  </mat-select>
-                                  <p>{{queryByStudent.ciudadNombre}}</p>
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Teléfono" type="number">
-                                  <p>{{usuario.telefono}}</p>
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-2">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Tipo de sangre" type="text">
-                                  <p>{{estudiante.tipoSangre}}</p>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-2">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="RH" type="text">
-                                  <p>{{estudiante.rh}}</p>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-4">
-                              <mat-form-field class="example-full-width">
-                                <input matInput placeholder="N Pasaporte" type="text">
-                                <p>{{estudiante.numeroPasaporte}}</p>
-                              </mat-form-field>
-                          </div>
-                          <div class="col-md-4">
-                            <mat-form-field>
-                              <mat-select placeholder="Programa Academico" [(ngModel)]="selectedState" name="state">
-                                <mat-option>Ingeniería de software</mat-option>
-                                <mat-option>Bibliotecológia</mat-option>
-                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"  #stateName>{{state.stateName}}</mat-option>
-                              </mat-select>
-                              <p>{{queryByStudent.nombrePrograma}}</p>
-                            </mat-form-field>
-                        </div>
-                      </div>
-                        <div class="row">
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Nombre Acudiente" type="text">
-                                    <p>{{estudiante.nombreAcudiente}}</p>
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Teléfono Acudiente" type="text">
-                                    <p>{{estudiante.numeroAcudiente}}</p>
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Parentesco" type="password">
-                                  <p>{{estudiante.parentescoAcudiente}}</p>
-                                </mat-form-field>
-                            </div>
-                          </div>
-                         <!--<div class="row">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Perfil estudiante</h4>
+            <p class="card-category">Datos del estudiante...</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nombres" type="text">
+                    <p>{{usuario.nombreUsuario}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Apellidos" type="text">
+                    <p>{{usuario.apellidoUsuario}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Contraseña plataforma" type="password">
+                    <p>{{usuario.contrasena}}</p>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-select placeholder="Tipo Documento" [(ngModel)]="selectedState" name="state">
+                      <mat-option>Cédula Ciudadania</mat-option>
+                      <mat-option>Cédula Extranjeria</mat-option>
+                      <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"
+                        #stateName>{{state.stateName}}</mat-option>
+                    </mat-select>
+                    <p>{{queryByStudent.tipoDocumentoNombre}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Número de documento" type="text">
+                    <p>{{usuario.documento}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Correo Electrónico" type="email">
+                    <p>{{usuario.correo}}</p>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Dirección Hogar" type="text">
+                    <p>{{usuario.direccion}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-select placeholder="Ciudad" [(ngModel)]="selectedState" name="state">
+                      <mat-option>Bogotá</mat-option>
+                      <mat-option>Cartagena</mat-option>
+                      <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"
+                        #stateName>{{state.stateName}}</mat-option>
+                    </mat-select>
+                    <p>{{queryByStudent.ciudadNombre}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Teléfono" type="number">
+                    <p>{{usuario.telefono}}</p>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Tipo de sangre" type="text">
+                    <p>{{estudiante.tipoSangre}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="RH" type="text">
+                    <p>{{estudiante.rh}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="N Pasaporte" type="text">
+                    <p>{{estudiante.numeroPasaporte}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-select placeholder="Programa Academico" [(ngModel)]="selectedState" name="state">
+                      <mat-option>Ingeniería de software</mat-option>
+                      <mat-option>Bibliotecológia</mat-option>
+                      <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"
+                        #stateName>{{state.stateName}}</mat-option>
+                    </mat-select>
+                    <p>{{queryByStudent.nombrePrograma}}</p>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nombre Acudiente" type="text">
+                    <p>{{estudiante.nombreAcudiente}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Teléfono Acudiente" type="text">
+                    <p>{{estudiante.numeroAcudiente}}</p>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Parentesco" type="password">
+                    <p>{{estudiante.parentescoAcudiente}}</p>
+                  </mat-form-field>
+                </div>
+              </div>
+              <!--<div class="row">
                               <div class="col-md-12">
                                 <label>About Me</label>
                                 <mat-form-field class="example-full-width">
@@ -142,13 +145,14 @@
                                   </div>
                               </div>
                           </div>-->
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
-                          <div class="clearfix"></div>
-                      </form>
-                  </div>
-              </div>
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" data-toggle="modal"
+                data-target="#exampleModal">Update Profile</button>
+              <div class="clearfix"></div>
+            </form>
           </div>
-          <!--<div class="col-md-4">
+        </div>
+      </div>
+      <!--<div class="col-md-4">
               <div class="card card-profile">
                   <div class="card-avatar">
                       <a href="javascript:void(0)">
@@ -165,6 +169,201 @@
                   </div>
               </div>
           </div>-->
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="main-content">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-header card-header-danger">
+                          <h4 class="card-title">Perfil estudiante</h4>
+                          <p class="card-category">Datos del estudiante...</p>
+                        </div>
+                        <div class="card-body">
+                          <form>
+                            <div class="row">
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Nombres" type="text">
+                                  <p>{{usuario.nombreUsuario}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Apellidos" type="text">
+                                  <p>{{usuario.apellidoUsuario}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Contraseña plataforma" type="password">
+                                  <p>{{usuario.contrasena}}</p>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">
+                                <mat-form-field>
+                                  <mat-select placeholder="Tipo Documento" [(ngModel)]="selectedState" name="state">
+                                    <mat-option>Cédula Ciudadania</mat-option>
+                                    <mat-option>Cédula Extranjeria</mat-option>
+                                    <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
+                                      name="state" #stateName>{{state.stateName}}</mat-option>
+                                  </mat-select>
+                                  <p>{{queryByStudent.tipoDocumentoNombre}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Número de documento" type="text">
+                                  <p>{{usuario.documento}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Correo Electrónico" type="email">
+                                  <p>{{usuario.correo}}</p>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Dirección Hogar" type="text">
+                                  <p>{{usuario.direccion}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field>
+                                  <mat-select placeholder="Ciudad" [(ngModel)]="selectedState" name="state">
+                                    <mat-option>Bogotá</mat-option>
+                                    <mat-option>Cartagena</mat-option>
+                                    <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
+                                      name="state" #stateName>{{state.stateName}}</mat-option>
+                                  </mat-select>
+                                  <p>{{queryByStudent.ciudadNombre}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Teléfono" type="number">
+                                  <p>{{usuario.telefono}}</p>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-2">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Tipo de sangre" type="text">
+                                  <p>{{estudiante.tipoSangre}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-2">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="RH" type="text">
+                                  <p>{{estudiante.rh}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="N Pasaporte" type="text">
+                                  <p>{{estudiante.numeroPasaporte}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field>
+                                  <mat-select placeholder="Programa Academico" [(ngModel)]="selectedState" name="state">
+                                    <mat-option>Ingeniería de software</mat-option>
+                                    <mat-option>Bibliotecológia</mat-option>
+                                    <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
+                                      name="state" #stateName>{{state.stateName}}</mat-option>
+                                  </mat-select>
+                                  <p>{{queryByStudent.nombrePrograma}}</p>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Nombre Acudiente" type="text">
+                                  <p>{{estudiante.nombreAcudiente}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Teléfono Acudiente" type="text">
+                                  <p>{{estudiante.numeroAcudiente}}</p>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Parentesco" type="password">
+                                  <p>{{estudiante.parentescoAcudiente}}</p>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <!--<div class="row">
+                                            <div class="col-md-12">
+                                              <label>About Me</label>
+                                              <mat-form-field class="example-full-width">
+                                                 <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                               </mat-form-field>
+                                                 <div class="form-group">
+              
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                                        <textarea class="form-control" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                              data-toggle="modal" data-target="#exampleModal">Update Profile</button>
+                            <div class="clearfix"></div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!--<div class="col-md-4">
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="javascript:void(0)">
+                                        <img class="img" src="./assets/img/faces/marc.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-category text-gray">CEO / Co-Founder</h6>
+                                    <h4 class="card-title">Alec Thompson</h4>
+                                    <p class="card-description">
+                                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                    </p>
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
+                                </div>
+                            </div>
+                        </div>-->
+                    <!-- Modal -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
