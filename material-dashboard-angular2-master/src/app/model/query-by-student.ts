@@ -1,5 +1,6 @@
 export class QueryByStudent{
 
+    id : number;
     nombre : String;
     apellido : String;
     contrasena : String;

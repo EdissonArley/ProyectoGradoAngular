@@ -6,6 +6,7 @@ import { Usuario } from 'app/model/usuario';
 import { Component, OnInit } from '@angular/core';
 import { Estudiante } from 'app/model/estudiante';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TipoDocumento } from 'app/model/tipo-documento';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,12 +19,25 @@ export class UserProfileComponent implements OnInit {
   estudiante: Estudiante;
   queryByStudent: QueryByStudent;
   formValue !: FormGroup;
+  tipoDocumento: TipoDocumento;
+  tiposDocumento: TipoDocumento[] = [];
 
 
   constructor(private userProfileService: UserProfileService, private estudianteService: EstudianteService,
     private queryByStudentService: QueryByStudentService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    const tipoDocumentoTest = new TipoDocumento();
+    tipoDocumentoTest.descripcion = 'doc de pteyjba';
+    tipoDocumentoTest.tipoDocumentoId = 6;
+    tipoDocumentoTest.sigla = 'jejeje';
+
+    const tipoDocumentoTest2 = new TipoDocumento();
+    tipoDocumentoTest2.descripcion = 'doc de trtrt';
+    tipoDocumentoTest2.tipoDocumentoId = 3;
+    tipoDocumentoTest2.sigla = 'jejeje'
+    this.tiposDocumento.push(tipoDocumentoTest);
+    this.tiposDocumento.push(tipoDocumentoTest2);
     /*this.userProfileService.traerUsuarioById(1).subscribe(e=> 
       {console.log(e);
       this.usuario = e});
@@ -73,7 +87,8 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  onEdit(row: any){
+  /*onEdit(row: any){
+    this.queryByStudent.id = row.id;
     this.formValue.controls['nombre'].setValue(row.nombre);
     this.formValue.controls['apellido'].setValue(row.apellido);
     this.formValue.controls['contrasena'].setValue(row.contrasena);
@@ -90,10 +105,31 @@ export class UserProfileComponent implements OnInit {
     this.formValue.controls['nombreAcudiente'].setValue(row.nombreAcudiente);
     this.formValue.controls['telefonoAcudiente'].setValue(row.telefonoAcudiente);
     this.formValue.controls['parentescoAcudiente'].setValue(row.parentescoAcudiente);
-  }
+  }*/
 
   updateEstudiante(){
-    
+    this.queryByStudent.nombre = this.formValue.value.nombre;
+    this.queryByStudent.apellido = this.formValue.value.apellido;
+    this.queryByStudent.contrasena = this.formValue.value.contrasena;
+    this.queryByStudent.tipoDocumentoNombre = this.tipoDocumento.descripcion;
+    this.queryByStudent.numeroDocumento = this.formValue.value.numeroDocumento;
+    this.queryByStudent.correo = this.formValue.value.correo;
+    this.queryByStudent.direccion = this.formValue.value.direccion;
+    this.queryByStudent.ciudad = this.formValue.value.ciudad;
+    this.queryByStudent.telefono = this.formValue.value.telefono;
+    this.queryByStudent.tipoSangre = this.formValue.value.tipoSangre;
+    this.queryByStudent.rh = this.formValue.value.rh;
+    this.queryByStudent.pasaporte = this.formValue.value.pasaporte;
+    this.queryByStudent.programaAcademico = this.formValue.value.programaAcademico;
+    this.queryByStudent.nombreAcudiente = this.formValue.value.nombreAcudiente;
+    this.queryByStudent.telefonoAcudiente = this.formValue.value.telefonoAcudiente;
+    this.queryByStudent.parentescoAcudiente = this.formValue.value.parentescoAcudiente;
+    this.queryByStudentService.patchEstudiante(this.queryByStudent, this.queryByStudent.id)
+    .subscribe(res=>{
+      alert("Datos estudiante actualizados exitosamente.");
+      let ref = document.getElementById('cancelar')
+      ref?.click();
+    })
   }
 
 }

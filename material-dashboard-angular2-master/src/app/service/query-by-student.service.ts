@@ -8,14 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class QueryByStudentService {
 
-  private url: string = 'http://localhost:8080/estudiante/documentByStudent';
+  private url: string = 'http://localhost:8080/perfil/';
   constructor(private httpClient: HttpClient) { }
 
   traerDocumentoByEstudiante(idEstudiante: number): Observable<QueryByStudent> {
-    return this.httpClient.get<QueryByStudent>(this.url + "/" + idEstudiante)
+    return this.httpClient.get<QueryByStudent>(this.url + "documentByStudent/" + idEstudiante)
   }
 
-  actualizarDatosEstudiante(data: any, idEstudiante: number): Observable<QueryByStudent>{
-    return this.httpClient.patch<QueryByStudent>(this.url + "/" + data, idEstudiante)
+  patchEstudiante(data: any, idEstudiante: number): Observable<QueryByStudent>{
+    console.log(data);
+    return this.httpClient.put<QueryByStudent>(this.url + "updateEstudiante/" + idEstudiante, data)
   }
 }
