@@ -11,7 +11,12 @@ export class QueryByStudentService {
   private url: string = 'http://localhost:8080/estudiante/documentByStudent';
   constructor(private httpClient: HttpClient) { }
 
-  traerDocumentoByEstudiante(idEstudiante : number) : Observable<QueryByStudent>{
+  traerDocumentoByEstudiante(idEstudiante: number): Observable<QueryByStudent> {
     return this.httpClient.get<QueryByStudent>(this.url + "/" + idEstudiante)
   }
+
+  actualizarDatosEstudiante(data: any, idEstudiante: number): Observable<QueryByStudent>{
+    return this.httpClient.patch<QueryByStudent>(this.url + "/" + data, idEstudiante)
+  }
+
 }

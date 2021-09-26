@@ -1,6 +1,19 @@
 export class QueryByStudent{
 
+    nombre : String;
+    apellido : String;
+    contrasena : String;
     tipoDocumentoNombre : String;
-    ciudadNombre : String;
-    nombrePrograma : String;
+    numeroDocumento : String;
+    correo : String;
+    direccion : String;
+    ciudad : String;
+    telefono : String
+    tipoSangre : String;
+    rh : String;
+    pasaporte : String;
+    programaAcademico : String;
+    nombreAcudiente : String;
+    telefonoAcudiente : String;
+    parentescoAcudiente : String;
 }
