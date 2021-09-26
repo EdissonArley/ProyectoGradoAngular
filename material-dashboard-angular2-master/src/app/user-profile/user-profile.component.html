@@ -12,19 +12,19 @@
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Nombres" type="text">
+                    <input matInput placeholder="Nombres" type="text" readonly>
                     <p>{{queryByStudent.nombre}}</p>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Apellidos" disabled type="text">
+                    <input matInput placeholder="Apellidos" type="text" readonly>
                     <p>{{queryByStudent.apellido}}</p>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Contraseña plataforma" type="password">
+                    <input matInput placeholder="Contraseña plataforma" type="password" readonly>
                     <p>{{queryByStudent.contrasena}}</p>
                   </mat-form-field>
                 </div>
@@ -43,13 +43,13 @@
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Número de documento" type="text">
+                    <input matInput placeholder="Número de documento" type="text" readonly>
                     <p>{{queryByStudent.numeroDocumento}}</p>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Correo Electrónico" type="email">
+                    <input matInput placeholder="Correo Electrónico" type="email" readonly>
                     <p>{{queryByStudent.correo}}</p>
                   </mat-form-field>
                 </div>
@@ -57,7 +57,7 @@
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Dirección Hogar" type="text">
+                    <input matInput placeholder="Dirección Hogar" type="text" readonly>
                     <p>{{queryByStudent.direccion}}</p>
                   </mat-form-field>
                 </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Teléfono" type="number">
+                    <input matInput placeholder="Teléfono" type="number" readonly>
                     <p>{{queryByStudent.telefono}}</p>
                   </mat-form-field>
                 </div>
@@ -82,19 +82,19 @@
               <div class="row">
                 <div class="col-md-2">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Tipo de sangre" type="text">
+                    <input matInput placeholder="Tipo de sangre" type="text" readonly>
                     <p>{{queryByStudent.tipoSangre}}</p>
                   </mat-form-field>
                 </div>
                 <div class="col-md-2">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="RH" type="text">
+                    <input matInput placeholder="RH" type="text" readonly>
                     <p>{{queryByStudent.rh}}</p>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="N Pasaporte" type="text">
+                    <input matInput placeholder="N Pasaporte" type="text" readonly>
                     <p>{{queryByStudent.pasaporte}}</p>
                   </mat-form-field>
                 </div>
@@ -113,19 +113,19 @@
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Nombre Acudiente" type="text">
+                    <input matInput placeholder="Nombre Acudiente" type="text" readonly>
                     <p>{{queryByStudent.nombreAcudiente}}</p>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Teléfono Acudiente" type="text">
+                    <input matInput placeholder="Teléfono Acudiente" type="text" readonly>
                     <p>{{queryByStudent.telefonoAcudiente}}</p>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Parentesco" type="password">
+                    <input matInput placeholder="Parentesco" type="text" readonly>
                     <p>{{queryByStudent.parentescoAcudiente}}</p>
                   </mat-form-field>
                 </div>
@@ -191,23 +191,22 @@
                           <p class="card-category">Datos del estudiante...</p>
                         </div>
                         <div class="card-body">
-                          <form [formGroup] = "formValue">
+                          <form [formGroup]="formValue">
                             <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Nombres" formControlName="nombre" type="text">
-                                  <p>{{queryByStudent.nombre}}</p>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Apellidos" formControlName="apellido" type="text">
-                                  <p>{{queryByStudent.apellido}}</p>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Contraseña plataforma" formControlName="contrasena" type="password">
+                                  <input matInput placeholder="Contraseña plataforma" formControlName="contrasena"
+                                    type="password">
                                   <p>{{queryByStudent.contrasena}}</p>
                                 </mat-form-field>
                               </div>
@@ -215,7 +214,8 @@
                             <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field>
-                                  <mat-select placeholder="Tipo Documento" [(ngModel)]="selectedState" name="state" formControlName="tipoDocumentoNombre" >
+                                  <mat-select placeholder="Tipo Documento" [(ngModel)]="selectedState" name="state"
+                                    formControlName="tipoDocumentoNombre">
                                     <mat-option>Cédula Ciudadania</mat-option>
                                     <mat-option>Cédula Extranjeria</mat-option>
                                     <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
@@ -226,14 +226,14 @@
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Número de documento" formControlName="numeroDocumento" type="text">
-                                  
+                                  <input matInput placeholder="Número de documento" formControlName="numeroDocumento"
+                                    type="text">
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Correo Electrónico" formControlName="correo" type="email">
-                                  <p>{{queryByStudent.correo}}</p>
+                                  <input matInput placeholder="Correo Electrónico" formControlName="correo"
+                                    type="email">
                                 </mat-form-field>
                               </div>
                             </div>
@@ -241,12 +241,12 @@
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Dirección Hogar" formControlName="direccion" type="text">
-                                  <p>{{queryByStudent.direccion}}</p>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field>
-                                  <mat-select placeholder="Ciudad" [(ngModel)]="selectedState" name="state"formControlName="ciudad">
+                                  <mat-select placeholder="Ciudad" [(ngModel)]="selectedState" name="state"
+                                    formControlName="ciudad">
                                     <mat-option>Bogotá</mat-option>
                                     <mat-option>Cartagena</mat-option>
                                     <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
@@ -258,7 +258,6 @@
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Teléfono" formControlName="telefono" type="number">
-                                  <p>{{queryByStudent.telefono}}</p>
                                 </mat-form-field>
                               </div>
                             </div>
@@ -266,24 +265,22 @@
                               <div class="col-md-2">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Tipo de sangre" formControlName="tipoSangre" type="text">
-                                  <p>{{queryByStudent.tipoSangre}}</p>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-2">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="RH" formControlName="rh" type="text">
-                                  <p>{{queryByStudent.rh}}</p>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="N Pasaporte" formControlName="pasaporte" type="text">
-                                  <p>{{queryByStudent.pasaporte}}</p>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field>
-                                  <mat-select placeholder="Programa Academico" [(ngModel)]="selectedState" name="state"formControlName="programaAcademico">
+                                  <mat-select placeholder="Programa Academico" [(ngModel)]="selectedState" name="state"
+                                    formControlName="programaAcademico">
                                     <mat-option>Ingeniería de software</mat-option>
                                     <mat-option>Bibliotecológia</mat-option>
                                     <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
@@ -296,20 +293,20 @@
                             <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Nombre Acudiente" formControlName="nombreAcudiente" type="text">
-                                  <p>{{queryByStudent.nombreAcudiente}}</p>
+                                  <input matInput placeholder="Nombre Acudiente" formControlName="nombreAcudiente"
+                                    type="text">
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Teléfono Acudiente" formControlName="telefonoAcudiente" type="text">
-                                  <p>{{queryByStudent.telefonoAcudiente}}</p>
+                                  <input matInput placeholder="Teléfono Acudiente" formControlName="telefonoAcudiente"
+                                    type="text">
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Parentesco" formControlName="parentescoAcudiente" type="password">
-                                  <p>{{queryByStudent.parentescoAcudiente}}</p>
+                                  <input matInput placeholder="Parentesco" formControlName="parentescoAcudiente"
+                                    type="text">
                                 </mat-form-field>
                               </div>
                             </div>
@@ -357,7 +354,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button (click)="crearDepartamento()" type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>

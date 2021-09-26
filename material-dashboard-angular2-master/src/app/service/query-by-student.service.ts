@@ -18,5 +18,4 @@ export class QueryByStudentService {
   actualizarDatosEstudiante(data: any, idEstudiante: number): Observable<QueryByStudent>{
     return this.httpClient.patch<QueryByStudent>(this.url + "/" + data, idEstudiante)
   }
-
 }
