@@ -1,12 +1,15 @@
+import { ProgramaAcademicoService } from './../service/programa-academico.service';
+import { CiudadService } from './../service/ciudad.service';
+import { ProgramaAcademico } from './../model/programa-academico';
+import { TipoDocumentoService } from './../service/tipo-documento.service';
 import { QueryByStudent } from 'app/model/query-by-student';
 import { QueryByStudentService } from './../service/query-by-student.service';
-import { EstudianteService } from './../service/estudiante.service';
-import { UserProfileService } from './../service/user-profile.service';
 import { Usuario } from 'app/model/usuario';
 import { Component, OnInit } from '@angular/core';
 import { Estudiante } from 'app/model/estudiante';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TipoDocumento } from 'app/model/tipo-documento';
+import { Ciudad } from 'app/model/ciudad';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,13 +24,18 @@ export class UserProfileComponent implements OnInit {
   formValue !: FormGroup;
   tipoDocumento: TipoDocumento;
   tiposDocumento: TipoDocumento[] = [];
+  ciudad: Ciudad;
+  ciudades: Ciudad[];
+  programaAcademico: ProgramaAcademico;
+  programasAcademico: ProgramaAcademico[];
 
 
-  constructor(private userProfileService: UserProfileService, private estudianteService: EstudianteService,
+
+  constructor(private tipoDocumentoService: TipoDocumentoService, private ciudadService: CiudadService, private programaAcademicoService: ProgramaAcademicoService,
     private queryByStudentService: QueryByStudentService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    const tipoDocumentoTest = new TipoDocumento();
+    /*const tipoDocumentoTest = new TipoDocumento();
     tipoDocumentoTest.descripcion = 'doc de pteyjba';
     tipoDocumentoTest.tipoDocumentoId = 6;
     tipoDocumentoTest.sigla = 'jejeje';
@@ -37,32 +45,40 @@ export class UserProfileComponent implements OnInit {
     tipoDocumentoTest2.tipoDocumentoId = 3;
     tipoDocumentoTest2.sigla = 'jejeje'
     this.tiposDocumento.push(tipoDocumentoTest);
-    this.tiposDocumento.push(tipoDocumentoTest2);
-    /*this.userProfileService.traerUsuarioById(1).subscribe(e=> 
-      {console.log(e);
-      this.usuario = e});
+    this.tiposDocumento.push(tipoDocumentoTest2);*/
 
-    this.estudianteService.traerEstudianteById(1).subscribe(e=>
-      {console.log(e);
-      this.estudiante = e});*/
+    this.tipoDocumentoService.traerTipoDocumento().subscribe(e => {
+      console.log(e);
+      this.tiposDocumento = e
+    });
+
+    this.ciudadService.traerCiudad().subscribe(e => {
+      console.log(e);
+      this.ciudades = e
+    });
+
+    this.programaAcademicoService.traerProgramaAcademico().subscribe(e =>{
+      console.log(e);
+      this.programasAcademico = e
+    });
 
     this.formValue = this.formBuilder.group({
-      nombre : [''],
-      apellido : [''],
-      contrasena : [''],
-      tipoDocumentoNombre : [''],
-      numeroDocumento : [''],
-      correo : [''],
-      direccion : [''],
-      ciudad : [''],
-      telefono : [''],
-      tipoSangre : [''],
-      rh : [''],
-      pasaporte : [''],
-      programaAcademico : [''],
-      nombreAcudiente : [''],
-      telefonoAcudiente : [''],
-      parentescoAcudiente : ['']
+      nombre: [''],
+      apellido: [''],
+      contrasena: [''],
+      tipoDocumentoNombre: [''],
+      numeroDocumento: [''],
+      correo: [''],
+      direccion: [''],
+      ciudad: [''],
+      telefono: [''],
+      tipoSangre: [''],
+      rh: [''],
+      pasaporte: [''],
+      programaAcademico: [''],
+      nombreAcudiente: [''],
+      telefonoAcudiente: [''],
+      parentescoAcudiente: ['']
     })
 
     this.queryByStudentService.traerDocumentoByEstudiante(1).subscribe(e => {
@@ -87,27 +103,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  /*onEdit(row: any){
-    this.queryByStudent.id = row.id;
-    this.formValue.controls['nombre'].setValue(row.nombre);
-    this.formValue.controls['apellido'].setValue(row.apellido);
-    this.formValue.controls['contrasena'].setValue(row.contrasena);
-    this.formValue.controls['tipoDocumentoNombre'].setValue(row.tipoDocumentoNombre);
-    this.formValue.controls['numeroDocumento'].setValue(row.numeroDocumento);
-    this.formValue.controls['correo'].setValue(row.correo);
-    this.formValue.controls['direccion'].setValue(row.direccion);
-    this.formValue.controls['ciudad'].setValue(row.ciudad);
-    this.formValue.controls['telefono'].setValue(row.telefono);
-    this.formValue.controls['tipoSangre'].setValue(row.tipoSangre);
-    this.formValue.controls['rh'].setValue(row.rh);
-    this.formValue.controls['pasaporte'].setValue(row.pasaporte);
-    this.formValue.controls['programaAcademico'].setValue(row.programaAcademico);
-    this.formValue.controls['nombreAcudiente'].setValue(row.nombreAcudiente);
-    this.formValue.controls['telefonoAcudiente'].setValue(row.telefonoAcudiente);
-    this.formValue.controls['parentescoAcudiente'].setValue(row.parentescoAcudiente);
-  }*/
-
-  updateEstudiante(){
+  updateEstudiante() {
     this.queryByStudent.nombre = this.formValue.value.nombre;
     this.queryByStudent.apellido = this.formValue.value.apellido;
     this.queryByStudent.contrasena = this.formValue.value.contrasena;
@@ -125,11 +121,11 @@ export class UserProfileComponent implements OnInit {
     this.queryByStudent.telefonoAcudiente = this.formValue.value.telefonoAcudiente;
     this.queryByStudent.parentescoAcudiente = this.formValue.value.parentescoAcudiente;
     this.queryByStudentService.patchEstudiante(this.queryByStudent, this.queryByStudent.id)
-    .subscribe(res=>{
-      alert("Datos estudiante actualizados exitosamente.");
-      let ref = document.getElementById('cancelar')
-      ref?.click();
-    })
+      .subscribe(res => {
+        alert("Datos estudiante actualizados exitosamente.");
+        let ref = document.getElementById('cancelar')
+        ref?.click();
+      })
   }
 
 }

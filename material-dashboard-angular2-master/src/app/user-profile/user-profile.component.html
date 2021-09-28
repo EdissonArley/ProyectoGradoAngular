@@ -31,8 +31,8 @@
                   <mat-form-field>
                     <mat-select placeholder="Tipo Documento" [(ngModel)]="tipoDocumento" name="tipoDocumento2"
                       [ngModelOptions]="{standalone: true}">
-                      <mat-option *ngFor="let documento1 of tiposDocumento" [value]="documento1">
-                        {{documento1.descripcion}}
+                      <mat-option *ngFor="let documento of tiposDocumento" [value]="documento">
+                        {{documento.descripcion}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
