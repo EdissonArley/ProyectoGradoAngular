@@ -56,13 +56,12 @@
                 </div>
                 <div class="col-md-4">
                   <mat-form-field>
-                    <mat-select placeholder="Ciudad" [(ngModel)]="selectedState" name="state">
-                      <mat-option>Bogotá</mat-option>
-                      <mat-option>Cartagena</mat-option>
-                      <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"
-                        #stateName>{{state.stateName}}</mat-option>
+                    <mat-select placeholder="Ciudad" [(ngModel)]="ciudad" name="ciudad"
+                      [ngModelOptions]="{standalone: true}">
+                      <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad">
+                        {{ciudad.nombre}}
+                      </mat-option>
                     </mat-select>
-                    <p>{{queryByStudent.ciudad}}</p>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
@@ -89,13 +88,12 @@
                 </div>
                 <div class="col-md-4">
                   <mat-form-field>
-                    <mat-select placeholder="Programa Academico" [(ngModel)]="selectedState" name="state">
-                      <mat-option>Ingeniería de software</mat-option>
-                      <mat-option>Bibliotecológia</mat-option>
-                      <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName' name="state"
-                        #stateName>{{state.stateName}}</mat-option>
+                    <mat-select placeholder="Programa Academico" [(ngModel)]="programaAcademico" name="programaAcademico"
+                    [ngModelOptions]="{standalone: true}">
+                      <mat-option *ngFor="let programaAcademico of programasAcademico" [value]="programaAcademico">
+                        {{programaAcademico.nombrePrograma}}
+                      </mat-option>
                     </mat-select>
-                    <p>{{queryByStudent.programaAcademico}}</p>
                   </mat-form-field>
                 </div>
               </div>
