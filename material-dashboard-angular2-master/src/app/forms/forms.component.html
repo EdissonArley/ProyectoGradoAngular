@@ -37,16 +37,16 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="profile">
                     <div class="card-body">
-                      <form>
+                      <form [formGroup]="formValue">
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Nombre completo" type="text">
+                              <input matInput placeholder="Nombre completo" formControlName="nombre" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Apellidos" type="text">
+                              <input matInput placeholder="Apellidos" formControlName="apellido" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -58,7 +58,7 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Documento de identificación" type="number">
+                              <input matInput placeholder="Documento de identificación" formControlName="numeroDocumento" type="number">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -83,22 +83,22 @@
                         <div class="row">
                           <div class="col-md-2">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Tipo de sangre" type="text">
+                              <input matInput placeholder="Tipo de sangre" formControlName="tipoSangre" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-2">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="RH" type="text">
+                              <input matInput placeholder="RH" formControlName="rh" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Dirección de residencia" type="text">
+                              <input matInput placeholder="Dirección de residencia" formControlName="direccion" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Teléfono" type="number">
+                              <input matInput placeholder="Teléfono" formControlName="telefono" type="number">
                             </mat-form-field>
                           </div>
                         </div>
@@ -110,7 +110,7 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="N Pasaporte" type="text">
+                              <input matInput placeholder="N Pasaporte" formControlName="pasaporte" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -122,21 +122,21 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="En caso de emergencia llamar a" type="text">
+                              <input matInput placeholder="En caso de emergencia llamar a" formControlName="nombreAcudiente" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Teléfono Acudiente" type="text">
+                              <input matInput placeholder="Teléfono Acudiente" formControlName="telefonoAcudiente" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Parentesco" type="password">
+                              <input matInput placeholder="Parentesco" formControlName="parentescoAcudiente" type="text">
                             </mat-form-field>
                           </div>
                         </div>
-                        <button mat-raised-button type="submit" class="btn btn-danger pull-right">Cargar</button>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="true">Cargar</button>
                         <div class="clearfix"></div>
                       </form>
                     </div>
@@ -147,11 +147,11 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field>
-                              <mat-select placeholder="Facultad" [(ngModel)]="selectedState" name="state">
-                                <mat-option>Ingeniería de software</mat-option>
-                                <mat-option>Bibliotecológia</mat-option>
-                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
-                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              <mat-select placeholder="Facultad" [(ngModel)]="facultad" name="facultad"
+                              [ngModelOptions]="{standalone: true}">
+                              <mat-option *ngFor="let facultad of facultades" [value]="facultad">
+                                {{facultad.nombreFacultad}}
+                              </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </div>
@@ -162,11 +162,11 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field>
-                              <mat-select placeholder="Programa Academico" [(ngModel)]="selectedState" name="state">
-                                <mat-option>Ingeniería de software</mat-option>
-                                <mat-option>Bibliotecológia</mat-option>
-                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
-                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              <mat-select placeholder="Programa Academico" [(ngModel)]="programaAcademico" name="programaAcademico"
+                              [ngModelOptions]="{standalone: true}">
+                              <mat-option *ngFor="let programaAcademico of programasAcademico" [value]="programaAcademico">
+                                {{programaAcademico.nombrePrograma}}
+                              </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </div>
@@ -184,11 +184,11 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field>
-                              <mat-select placeholder="Estado" [(ngModel)]="selectedState" name="state">
-                                <mat-option>Activo</mat-option>
-                                <mat-option>Inactivo</mat-option>
-                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
-                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              <mat-select placeholder="Estado" [(ngModel)]="estado" name="estado"
+                              [ngModelOptions]="{standalone: true}">
+                              <mat-option *ngFor="let estado of estados" [value]="estado">
+                                {{estado.nombre}}
+                              </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </div>
@@ -205,7 +205,7 @@
                             </mat-form-field>
                           </div>
                         </div>
-                        <button mat-raised-button type="submit" class="btn btn-danger pull-right">Cargar</button>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="true">Cargar</button>
                         <div class="clearfix"></div>
                       </form>
                     </div>
@@ -266,7 +266,8 @@
                             </mat-form-field>
                           </div>
                         </div>
-                        <button mat-raised-button type="submit" class="btn btn-danger pull-right">Cargar</button>
+                        <button (click)="crearFormularioInscripcion()" mat-raised-button type="button"
+                            class="btn btn-danger pull-right">Cargar</button>
                         <div class="clearfix"></div>
                       </form>
                     </div>
