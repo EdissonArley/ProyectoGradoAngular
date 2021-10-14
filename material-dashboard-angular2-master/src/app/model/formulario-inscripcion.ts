@@ -17,12 +17,12 @@ export class FormularioInscripcion {
     public estadoCivil : String;
     public numeroPasaporte : String;
     public celular : String;
-    public numeroEmergencia : String;
+    public nombreAcudiente : String;
     public telefonoAcudiente : String;
     public parentesco : String;
-    public facultad : Facultad;
+    public facultad : String;
     public codigo : String;
-    public programaAcademico : ProgramaAcademico;
+    public programaAcademico : String;
     public semestreAcademico : String;
     public jornada : String;
     public promedioAcumulado : String;

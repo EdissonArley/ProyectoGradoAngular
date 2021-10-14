@@ -1,6 +1,8 @@
+import { FormularioInscripcionService } from './../service/formulario-inscripcion.service';
 import { DepartamentoService } from './../service/departamento.service';
 import { Component, OnInit } from '@angular/core';
 import { Departamento } from 'app/model/departamento';
+import { FormularioInscripcion } from 'app/model/formulario-inscripcion';
 
 @Component({
   selector: 'app-departamento',
@@ -12,8 +14,9 @@ export class DepartamentoComponent implements OnInit {
   departamentos : Departamento[];
   departamento : Departamento;
   nombreDepartamento : string;
+  formularioInscripcion : FormularioInscripcion;
 
-  constructor(private departamentoService:DepartamentoService) { }
+  constructor(private departamentoService:DepartamentoService, private formularioInscripcionService: FormularioInscripcionService) { }
 
   ngOnInit(): void {
 
@@ -35,14 +38,16 @@ export class DepartamentoComponent implements OnInit {
           this.departamento = e});*/
   }
 
-  crearDepartamento(): void {
-    const depto : Departamento = new Departamento();
-    depto.nombre = this.nombreDepartamento;
+  crearFormularioInscripcion(): void {
+    //const depto : Departamento = new Departamento();
+    const formularioInscripcion : FormularioInscripcion = new FormularioInscripcion();
+    formularioInscripcion.nombreCompleto = this.nombreDepartamento;
+    //depto.nombre = this.nombreDepartamento;
     console.log("ingresó al metodo crear " + this.nombreDepartamento);
-    this.departamentoService.crearDepartamento(depto).subscribe(e=> 
+    this.formularioInscripcionService.crearFormularioInscripcion(formularioInscripcion).subscribe(e=> 
       {console.log(e);
         alert(e.toString());
-      this.departamento = e});
+      this.formularioInscripcion = e});
   }
 
   /*editarDepartamento(): void {

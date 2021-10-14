@@ -12,6 +12,8 @@ export class FormularioInscripcionService {
   constructor(private httpClient: HttpClient) { }
 
   crearFormularioInscripcion(formularioInscripcion : FormularioInscripcion): Observable<FormularioInscripcion>{
+    console.log('ese es el formulario que se envia ' );
+    console.log(formularioInscripcion);
     return this.httpClient.post<FormularioInscripcion>(this.url,formularioInscripcion)
   }
 }

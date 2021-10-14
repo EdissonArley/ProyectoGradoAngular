@@ -104,6 +104,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateEstudiante() {
+    console.log('Este es el nombre'+ this.formValue.value.nombre);
     this.queryByStudent.nombre = this.formValue.value.nombre;
     this.queryByStudent.apellido = this.formValue.value.apellido;
     this.queryByStudent.contrasena = this.formValue.value.contrasena;

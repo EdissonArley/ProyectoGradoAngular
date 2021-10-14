@@ -41,30 +41,30 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Nombre completo" formControlName="nombre" type="text">
+                              <input matInput placeholder="Nombre completo" formControlName="nombreCompleto" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Apellidos" formControlName="apellido" type="text">
+                              <input matInput placeholder="Apellidos" formControlName="apellidos" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Nacionalidad" type="text">
+                              <input matInput placeholder="Nacionalidad" formControlName="nacionalidad" type="text">
                             </mat-form-field>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Documento de identificación" formControlName="numeroDocumento" type="number">
+                              <input matInput placeholder="Documento de identificación" formControlName="documentoIdentificacion" type="number">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field appearance="fill">
                               <mat-label>Fecha de nacimiento</mat-label>
-                              <input matInput [matDatepicker]="picker">
+                              <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
                               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                               <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
@@ -93,7 +93,7 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Dirección de residencia" formControlName="direccion" type="text">
+                              <input matInput placeholder="Dirección de residencia" formControlName="direccionResidencia" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -105,17 +105,17 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Estado civil" type="text">
+                              <input matInput placeholder="Estado civil" formControlName="estadoCivil" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="N Pasaporte" formControlName="pasaporte" type="text">
+                              <input matInput placeholder="N Pasaporte" formControlName="numeroPasaporte" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Celular" type="number">
+                              <input matInput placeholder="Celular" formControlName="celular" type="number">
                             </mat-form-field>
                           </div>
                         </div>
@@ -132,11 +132,12 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Parentesco" formControlName="parentescoAcudiente" type="text">
+                              <input matInput placeholder="Parentesco" formControlName="parentesco" type="text">
                             </mat-form-field>
                           </div>
                         </div>
-                        <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="true">Cargar</button>
+                        <button (click)="crearFormularioInscripcion()" mat-raised-button type="button"
+                            class="btn btn-danger pull-right">Cargar</button>
                         <div class="clearfix"></div>
                       </form>
                     </div>
@@ -157,7 +158,7 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Código" type="text">
+                              <input matInput placeholder="Código" formControlName="codigo" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -174,12 +175,12 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Sem. Académico" type="password">
+                              <input matInput placeholder="Sem. Académico" formControlName="semestreAcademico" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Jornada" type="password">
+                              <input matInput placeholder="Jornada" formControlName="jornada" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -196,12 +197,12 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Promedio Acumulado" type="password">
+                              <input matInput placeholder="Promedio Acumulado" formControlName="promedioAcumulado" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Idiomas" type="password">
+                              <input matInput placeholder="Idiomas" formControlName="idiomas" type="text">
                             </mat-form-field>
                           </div>
                         </div>
@@ -217,12 +218,12 @@
                           <div class="col-md-8">
                             <mat-form-field class="example-full-width">
                               <input matInput
-                                placeholder="Institución en el exterior en donde desarrollará la actividad" type="text">
+                                placeholder="Institución en el exterior en donde desarrollará la actividad" formControlName="institucionExterior" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Pais" type="text">
+                              <input matInput placeholder="Pais" formControlName="pais" type="text">
                             </mat-form-field>
                           </div>
                         </div>
@@ -257,12 +258,12 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Duración del programa" type="text">
+                              <input matInput placeholder="Duración del programa" formControlName="duracionPrograma" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Fuente de financiación" type="text">
+                              <input matInput placeholder="Fuente de financiación" formControlName="fuenteFinanciacion" type="text">
                             </mat-form-field>
                           </div>
                         </div>
