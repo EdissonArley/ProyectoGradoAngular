@@ -66,7 +66,7 @@ export class UserProfileComponent implements OnInit {
       nombre: [''],
       apellido: [''],
       contrasena: [''],
-      tipoDocumentoNombre: [''],
+      tipoDocumento: [''],
       numeroDocumento: [''],
       correo: [''],
       direccion: [''],
@@ -86,7 +86,7 @@ export class UserProfileComponent implements OnInit {
       this.formValue.get('nombre').setValue(e.nombre);
       this.formValue.get('apellido').setValue(e.apellido);
       this.formValue.get('contrasena').setValue(e.contrasena);
-      this.formValue.get('tipoDocumentoNombre').setValue(e.tipoDocumentoNombre);
+      this.formValue.get('tipoDocumento').setValue(e.tipoDocumentoNombre);
       this.formValue.get('numeroDocumento').setValue(e.numeroDocumento);
       this.formValue.get('correo').setValue(e.correo);
       this.formValue.get('direccion').setValue(e.direccion);
@@ -117,7 +117,7 @@ export class UserProfileComponent implements OnInit {
     this.queryByStudent.tipoSangre = this.formValue.value.tipoSangre;
     this.queryByStudent.rh = this.formValue.value.rh;
     this.queryByStudent.pasaporte = this.formValue.value.pasaporte;
-    this.queryByStudent.programaAcademico = this.formValue.value.programaAcademico;
+    this.queryByStudent.programaAcademico = this.programaAcademico.nombrePrograma;
     this.queryByStudent.nombreAcudiente = this.formValue.value.nombreAcudiente;
     this.queryByStudent.telefonoAcudiente = this.formValue.value.telefonoAcudiente;
     this.queryByStudent.parentescoAcudiente = this.formValue.value.parentescoAcudiente;

@@ -37,11 +37,12 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="profile">
                     <div class="card-body">
-                      <form [formGroup]="formValue">
+                      <form [formGroup]="formValuePersonalInformation">
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Nombre completo" formControlName="nombreCompleto" type="text">
+                              <input matInput placeholder="Nombre completo" formControlName="nombreCompleto"
+                                type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -58,7 +59,8 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Documento de identificación" formControlName="documentoIdentificacion" type="number">
+                              <input matInput placeholder="Documento de identificación"
+                                formControlName="documentoIdentificacion" type="number">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -70,13 +72,8 @@
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
-                            <mat-form-field>
-                              <mat-select placeholder="Sexo" [(ngModel)]="selectedState" name="state">
-                                <mat-option>Masculino</mat-option>
-                                <mat-option>Femenino</mat-option>
-                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
-                                  name="state" #stateName>{{state.stateName}}</mat-option>
-                              </mat-select>
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Sexo" formControlName="sexo" type="text">
                             </mat-form-field>
                           </div>
                         </div>
@@ -93,7 +90,8 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Dirección de residencia" formControlName="direccionResidencia" type="text">
+                              <input matInput placeholder="Dirección de residencia"
+                                formControlName="direccionResidencia" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -122,12 +120,14 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="En caso de emergencia llamar a" formControlName="nombreAcudiente" type="text">
+                              <input matInput placeholder="En caso de emergencia llamar a"
+                                formControlName="nombreAcudiente" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Teléfono Acudiente" formControlName="telefonoAcudiente" type="text">
+                              <input matInput placeholder="Teléfono Acudiente" formControlName="telefonoAcudiente"
+                                type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -136,23 +136,23 @@
                             </mat-form-field>
                           </div>
                         </div>
-                        <button (click)="crearFormularioInscripcion()" mat-raised-button type="button"
-                            class="btn btn-danger pull-right">Cargar</button>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                          [disabled]="true">Cargar</button>
                         <div class="clearfix"></div>
                       </form>
                     </div>
                   </div>
                   <div class="tab-pane" id="infoAcademica">
                     <div class="card-body">
-                      <form>
+                      <form [formGroup]="formValueAcademicInformation">
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field>
                               <mat-select placeholder="Facultad" [(ngModel)]="facultad" name="facultad"
-                              [ngModelOptions]="{standalone: true}">
-                              <mat-option *ngFor="let facultad of facultades" [value]="facultad">
-                                {{facultad.nombreFacultad}}
-                              </mat-option>
+                                [ngModelOptions]="{standalone: true}">
+                                <mat-option *ngFor="let facultad of facultades" [value]="facultad">
+                                  {{facultad.nombreFacultad}}
+                                </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </div>
@@ -165,9 +165,9 @@
                             <mat-form-field>
                               <mat-select placeholder="Programa Academico" [(ngModel)]="programaAcademico" name="programaAcademico"
                               [ngModelOptions]="{standalone: true}">
-                              <mat-option *ngFor="let programaAcademico of programasAcademico" [value]="programaAcademico">
-                                {{programaAcademico.nombrePrograma}}
-                              </mat-option>
+                                <mat-option *ngFor="let programaAcademico of programasAcademico" [value]="programaAcademico">
+                                  {{programaAcademico.nombrePrograma}}
+                                </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </div>
@@ -175,7 +175,8 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Sem. Académico" formControlName="semestreAcademico" type="text">
+                              <input matInput placeholder="Sem. Académico" formControlName="semestreAcademico"
+                                type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -185,11 +186,11 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field>
-                              <mat-select placeholder="Estado" [(ngModel)]="estado" name="estado"
-                              [ngModelOptions]="{standalone: true}">
-                              <mat-option *ngFor="let estado of estados" [value]="estado">
-                                {{estado.nombre}}
-                              </mat-option>
+                              <mat-select placeholder="Estado Trámite" [(ngModel)]="estado" name="estado"
+                                [ngModelOptions]="{standalone: true}">
+                                <mat-option *ngFor="let estado of estados" [value]="estado">
+                                  {{estado.nombre}}
+                                </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </div>
@@ -197,7 +198,8 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Promedio Acumulado" formControlName="promedioAcumulado" type="text">
+                              <input matInput placeholder="Promedio Acumulado" formControlName="promedioAcumulado"
+                                type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -206,19 +208,21 @@
                             </mat-form-field>
                           </div>
                         </div>
-                        <button mat-raised-button type="submit" class="btn btn-danger pull-right" [disabled]="true">Cargar</button>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                          [disabled]="true">Cargar</button>
                         <div class="clearfix"></div>
                       </form>
                     </div>
                   </div>
                   <div class="tab-pane" id="settings">
                     <div class="card-body">
-                      <form>
+                      <form [formGroup]="formValueInternationalInformation">
                         <div class="row">
                           <div class="col-md-8">
                             <mat-form-field class="example-full-width">
                               <input matInput
-                                placeholder="Institución en el exterior en donde desarrollará la actividad" formControlName="institucionExterior" type="text">
+                                placeholder="Institución en el exterior en donde desarrollará la actividad"
+                                formControlName="institucionExterior" type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
@@ -230,18 +234,18 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field>
-                              <mat-select placeholder="Ciudad" [(ngModel)]="selectedState" name="state">
-                                <mat-option>Bogotá</mat-option>
-                                <mat-option>Cartagena</mat-option>
-                                <mat-option *ngFor="let state of stateRows" [value]="state" [(ngModel)]='statName'
-                                  name="state" #stateName>{{state.stateName}}</mat-option>
+                              <mat-select placeholder="Ciudad" [(ngModel)]="ciudad" name="ciudad"
+                                [ngModelOptions]="{standalone: true}">
+                                <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad">
+                                  {{ciudad.nombre}}
+                                </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field appearance="fill">
                               <mat-label>Fecha Salida</mat-label>
-                              <input matInput [matDatepicker]="outPicker">
+                              <input matInput [matDatepicker]="outPicker"  formControlName="fechaSalida">
                               <mat-datepicker-toggle matSuffix [for]="outPicker"></mat-datepicker-toggle>
                               <mat-datepicker #outPicker></mat-datepicker>
                             </mat-form-field>
@@ -249,7 +253,7 @@
                           <div class="col-md-4">
                             <mat-form-field appearance="fill">
                               <mat-label>Fecha Regreso</mat-label>
-                              <input matInput [matDatepicker]="inPicker">
+                              <input matInput [matDatepicker]="inPicker"  formControlName="fechaRegreso">
                               <mat-datepicker-toggle matSuffix [for]="inPicker"></mat-datepicker-toggle>
                               <mat-datepicker #inPicker></mat-datepicker>
                             </mat-form-field>
@@ -258,23 +262,43 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Duración del programa" formControlName="duracionPrograma" type="text">
+                              <input matInput placeholder="Duración del programa" formControlName="duracionPrograma"
+                                type="text">
                             </mat-form-field>
                           </div>
                           <div class="col-md-4">
                             <mat-form-field class="example-full-width">
-                              <input matInput placeholder="Fuente de financiación" formControlName="fuenteFinanciacion" type="text">
+                              <input matInput placeholder="Fuente de financiación" formControlName="fuenteFinanciacion"
+                                type="text">
                             </mat-form-field>
                           </div>
                         </div>
-                        <button (click)="crearFormularioInscripcion()" mat-raised-button type="button"
-                            class="btn btn-danger pull-right">Cargar</button>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right" data-toggle="modal"
+                          data-target="#exampleModal">Cargar</button>
                         <div class="clearfix"></div>
                       </form>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¡Confirmación registo!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="cancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button (click)="crearFormularioInscripcion()" mat-raised-button type="button"
+                class="btn btn-danger pull-right">Confirmar</button>
             </div>
           </div>
         </div>

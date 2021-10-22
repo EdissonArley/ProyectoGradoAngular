@@ -1,6 +1,3 @@
-import { Estado } from './estado';
-import { Facultad } from './facultad';
-import { ProgramaAcademico } from './programa-academico';
 export class FormularioInscripcion {
 
     public formularioId : number;
@@ -34,5 +31,5 @@ export class FormularioInscripcion {
     public fechaRegreso : Date;
     public duracionPrograma : String;
     public fuenteFinanciacion : String;
-    public estado : Estado;
+    public estado : String;
 }

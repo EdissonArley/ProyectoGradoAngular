@@ -29,7 +29,7 @@
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field>
-                    <mat-select placeholder="Tipo Documento" [(ngModel)]="tipoDocumento" name="tipoDocumento2"
+                    <mat-select placeholder="Tipo Documento" [(ngModel)]="tipoDocumento" name="tipoDocumento"
                       [ngModelOptions]="{standalone: true}">
                       <mat-option *ngFor="let documento of tiposDocumento" [value]="documento">
                         {{documento.descripcion}}

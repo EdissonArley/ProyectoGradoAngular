@@ -1,3 +1,4 @@
+import { CiudadService } from './../service/ciudad.service';
 import { FormularioInscripcionService } from './../service/formulario-inscripcion.service';
 import { FormularioInscripcion } from 'app/model/formulario-inscripcion';
 import { FacultadService } from './../service/facultad.service';
@@ -10,6 +11,7 @@ import { QueryByStudent } from 'app/model/query-by-student';
 import { ProgramaAcademicoService } from 'app/service/programa-academico.service';
 import { QueryByStudentService } from 'app/service/query-by-student.service';
 import { Facultad } from 'app/model/facultad';
+import { Ciudad } from 'app/model/ciudad';
 
 @Component({
   selector: 'app-forms',
@@ -18,147 +20,172 @@ import { Facultad } from 'app/model/facultad';
 })
 export class FormsComponent implements OnInit {
 
-  
+
   queryByStudent: QueryByStudent;
-  formValue !: FormGroup;
+  formValuePersonalInformation !: FormGroup;
+  formValueAcademicInformation !: FormGroup;
+  formValueInternationalInformation !: FormGroup;
   programaAcademico: ProgramaAcademico;
   programasAcademico: ProgramaAcademico[];
   estados: Estado[];
   estado: Estado;
   facultades: Facultad[];
   facultad: Facultad;
+  ciudades: Ciudad[];
+  ciudad: Ciudad;
 
-  
-	nombreCompleto : String;
-	apellidos : String;
-	nacionalidad : String;
-	documentoIdentificacion : String;
-	fechaNacimiento : Date;
-	sexo : String;
-	tipoSangre : String;
-	rh : String;
-	direccionResidencia : String;
-	telefono : String;
-	estadoCivil : String;
-	numeroPasaporte : String;
-	celular : String;
-	numeroEmergencia : String;
-	telefonoAcudiente : String;
-	parentesco : String;
-	codigo : String;
-	semestreAcademico : String;
-	jornada : String;
-	promedioAcumulado : String;
-	idiomas : String;
-	institucionExterior : String;
-	pais : String;
-	cuidad : String;
-	fechaSalida : Date;
-	fechaRegreso : Date;
-	duracionPrograma : String;
-	fuenteFinanciacion : String;
 
-  constructor(private formBuilder: FormBuilder, private queryByStudentService: QueryByStudentService, 
+  nombreCompleto: String;
+  apellidos: String;
+  nacionalidad: String;
+  documentoIdentificacion: String;
+  fechaNacimiento: Date;
+  sexo: String;
+  tipoSangre: String;
+  rh: String;
+  direccionResidencia: String;
+  telefono: String;
+  estadoCivil: String;
+  numeroPasaporte: String;
+  celular: String;
+  numeroEmergencia: String;
+  telefonoAcudiente: String;
+  parentesco: String;
+  codigo: String;
+  semestreAcademico: String;
+  jornada: String;
+  promedioAcumulado: String;
+  idiomas: String;
+  institucionExterior: String;
+  pais: String;
+  fechaSalida: Date;
+  fechaRegreso: Date;
+  duracionPrograma: String;
+  fuenteFinanciacion: String;
+
+  constructor(private formBuilder: FormBuilder, private queryByStudentService: QueryByStudentService,
     private programaAcademicoService: ProgramaAcademicoService, private estadoService: EstadoService,
-    private facultadService: FacultadService, private formularioInscripcionService: FormularioInscripcionService) { }
+    private facultadService: FacultadService, private ciudadService: CiudadService, 
+    private formularioInscripcionService: FormularioInscripcionService) { }
 
   ngOnInit(): void {
 
-    this.programaAcademicoService.traerProgramaAcademico().subscribe(e =>{
+    this.programaAcademicoService.traerProgramaAcademico().subscribe(e => {
       console.log(e);
       this.programasAcademico = e
     });
 
-    this.estadoService.traerEstado().subscribe(e =>{
+    this.estadoService.traerEstado().subscribe(e => {
       console.log(e);
       this.estados = e
     });
 
-    this.facultadService.traerFacultad().subscribe(e =>{
+    this.facultadService.traerFacultad().subscribe(e => {
       console.log(e);
       this.facultades = e
     });
 
-    this.formValue = this.formBuilder.group({
+    this.ciudadService.traerCiudad().subscribe(e => {
+      console.log(e);
+      this.ciudades = e
+    });
+
+    this.formValuePersonalInformation = this.formBuilder.group({
       nombreCompleto: [''],
       apellidos: [''],
-      contrasena: [''],
-      tipoDocumentoNombre: [''],
+      nacionalidad: [''],
       documentoIdentificacion: [''],
-      correo: [''],
-      direccionResidencia: [''],
-      ciudad: [''],
-      telefono: [''],
+      fechaNacimiento: [''],
+      sexo: [''],
       tipoSangre: [''],
       rh: [''],
-      pasaporte: [''],
-      programaAcademico: [''],
+      direccionResidencia: [''],
+      telefono: [''],
+      estadoCivil: [''],
+      numeroPasaporte: [''],
+      celular: [''],
       nombreAcudiente: [''],
       telefonoAcudiente: [''],
-      parentesco: ['']
+      parentesco: [''],
+    })
+
+    this.formValueAcademicInformation = this.formBuilder.group({
+      facultad: [''],
+      codigo: [''],
+      programaAcademico: [''],
+      semestreAcademico: [''],
+      jornada: [''],
+      promedioAcumulado: [''],
+      estado: [''],
+      idiomas: [''],
+    })
+
+    this.formValueInternationalInformation = this.formBuilder.group({
+      institucionExterior: [''],
+      pais: [''],
+      cuidad: [''],
+      fechaSalida: [''],
+      fechaRegreso: [''],
+      duracionPrograma: [''],
+      fuenteFinanciacion: [''],
     })
 
     this.queryByStudentService.traerDocumentoByEstudiante(1).subscribe(e => {
       this.queryByStudent = e
-      this.formValue.get('nombreCompleto').setValue(e.nombre);
-      this.formValue.get('apellidos').setValue(e.apellido);
-      this.formValue.get('tipoDocumentoNombre').setValue(e.tipoDocumentoNombre);
-      this.formValue.get('documentoIdentificacion').setValue(e.numeroDocumento);
-      this.formValue.get('correo').setValue(e.correo);
-      this.formValue.get('direccionResidencia').setValue(e.direccion);
-      this.formValue.get('ciudad').setValue(e.ciudad);
-      this.formValue.get('telefono').setValue(e.telefono);
-      this.formValue.get('tipoSangre').setValue(e.tipoSangre);
-      this.formValue.get('rh').setValue(e.rh);
-      this.formValue.get('pasaporte').setValue(e.pasaporte);
-      this.formValue.get('programaAcademico').setValue(e.programaAcademico);
-      this.formValue.get('nombreAcudiente').setValue(e.nombreAcudiente);
-      this.formValue.get('telefonoAcudiente').setValue(e.telefonoAcudiente);
-      this.formValue.get('parentesco').setValue(e.parentescoAcudiente);
+      this.formValuePersonalInformation.get('nombreCompleto').setValue(e.nombre);
+      this.formValuePersonalInformation.get('apellidos').setValue(e.apellido);
+      this.formValuePersonalInformation.get('documentoIdentificacion').setValue(e.numeroDocumento);
+      this.formValuePersonalInformation.get('direccionResidencia').setValue(e.direccion);
+      this.formValuePersonalInformation.get('telefono').setValue(e.telefono);
+      this.formValuePersonalInformation.get('tipoSangre').setValue(e.tipoSangre);
+      this.formValuePersonalInformation.get('rh').setValue(e.rh);
+      this.formValuePersonalInformation.get('nombreAcudiente').setValue(e.nombreAcudiente);
+      this.formValuePersonalInformation.get('telefonoAcudiente').setValue(e.telefonoAcudiente);
+      this.formValuePersonalInformation.get('parentesco').setValue(e.parentescoAcudiente);
       console.log(e);
     });
   }
 
   crearFormularioInscripcion(): void {
-    const formularioInscripcion : FormularioInscripcion = new FormularioInscripcion();
-    formularioInscripcion.nombreCompleto = this.formValue.value.nombreCompleto;
-	  formularioInscripcion.apellidos = this.formValue.value.apellidos;
-	  formularioInscripcion.nacionalidad = this.formValue.value.nacionalidad;
-  	formularioInscripcion.documentoIdentificacion = this.formValue.value.documentoIdentificacion;
-	  formularioInscripcion.fechaNacimiento = this.formValue.value.fechaNacimiento;
-  	formularioInscripcion.sexo = this.formValue.value.sexo;
-  	formularioInscripcion.tipoSangre = this.formValue.value.tipoSangre;
-  	formularioInscripcion.rh = this.formValue.value.rh;
-  	formularioInscripcion.direccionResidencia = this.formValue.value.direccionResidencia;
-  	formularioInscripcion.telefono = this.formValue.value.telefono;
-	  formularioInscripcion.estadoCivil = this.formValue.value.estadoCivil;
-	  formularioInscripcion.numeroPasaporte = this.formValue.value.numeroPasaporte;
-	  formularioInscripcion.celular = this.formValue.value.celular;
-	  formularioInscripcion.nombreAcudiente = this.formValue.value.nombreAcudiente;
-	  formularioInscripcion.telefonoAcudiente = this.formValue.value.telefonoAcudiente;
-	  formularioInscripcion.parentesco = this.formValue.value.parentesco;
-	  formularioInscripcion.facultad = this.formValue.value.facultad;
-	  formularioInscripcion.codigo = this.formValue.value.codigo;
-	  formularioInscripcion.programaAcademico = this.formValue.value.programaAcademico;
-	  formularioInscripcion.semestreAcademico = this.formValue.value.semestreAcademico;
-	  formularioInscripcion.jornada = this.formValue.value.jornada;
-	  formularioInscripcion.promedioAcumulado = this.formValue.value.promedioAcumulado;
-	  formularioInscripcion.idiomas = this.formValue.value.idiomas;
-	  formularioInscripcion.institucionExterior = this.formValue.value.institucionExterior;
-	  formularioInscripcion.pais = this.formValue.value.pais;
-	  formularioInscripcion.cuidad = this.formValue.value.cuidad;
-	  formularioInscripcion.fechaSalida = this.formValue.value.fechaSalida;
-	  formularioInscripcion.fechaRegreso = this.formValue.value.fechaRegreso;
-	  formularioInscripcion.duracionPrograma = this.formValue.value.duracionPrograma;
-  	formularioInscripcion.fuenteFinanciacion = this.formValue.value.fuenteFinanciacion;
-  	formularioInscripcion.estado = this.formValue.value.estado;
+    const formularioInscripcion: FormularioInscripcion = new FormularioInscripcion();
+    formularioInscripcion.nombreCompleto = this.formValuePersonalInformation.value.nombreCompleto;
+    formularioInscripcion.apellidos = this.formValuePersonalInformation.value.apellidos;
+    formularioInscripcion.nacionalidad = this.formValuePersonalInformation.value.nacionalidad;
+    formularioInscripcion.documentoIdentificacion = this.formValuePersonalInformation.value.documentoIdentificacion;
+    formularioInscripcion.fechaNacimiento = this.formValuePersonalInformation.value.fechaNacimiento;
+    formularioInscripcion.sexo = this.formValuePersonalInformation.value.sexo;
+    formularioInscripcion.tipoSangre = this.formValuePersonalInformation.value.tipoSangre;
+    formularioInscripcion.rh = this.formValuePersonalInformation.value.rh;
+    formularioInscripcion.direccionResidencia = this.formValuePersonalInformation.value.direccionResidencia;
+    formularioInscripcion.telefono = this.formValuePersonalInformation.value.telefono;
+    formularioInscripcion.estadoCivil = this.formValuePersonalInformation.value.estadoCivil;
+    formularioInscripcion.numeroPasaporte = this.formValuePersonalInformation.value.numeroPasaporte;
+    formularioInscripcion.celular = this.formValuePersonalInformation.value.celular;
+    formularioInscripcion.nombreAcudiente = this.formValuePersonalInformation.value.nombreAcudiente;
+    formularioInscripcion.telefonoAcudiente = this.formValuePersonalInformation.value.telefonoAcudiente;
+    formularioInscripcion.parentesco = this.formValuePersonalInformation.value.parentesco;
+    formularioInscripcion.facultad = this.facultad.nombreFacultad;
+    formularioInscripcion.codigo = this.formValueAcademicInformation.value.codigo;
+    formularioInscripcion.programaAcademico = this.programaAcademico.nombrePrograma;
+    formularioInscripcion.semestreAcademico = this.formValueAcademicInformation.value.semestreAcademico;
+    formularioInscripcion.jornada = this.formValueAcademicInformation.value.jornada;    
+    //formularioInscripcion.estado = this.estado.estadoId;
+    formularioInscripcion.promedioAcumulado = this.formValueAcademicInformation.value.promedioAcumulado;
+    formularioInscripcion.idiomas = this.formValueAcademicInformation.value.idiomas;
+    formularioInscripcion.institucionExterior = this.formValueInternationalInformation.value.institucionExterior;
+    formularioInscripcion.pais = this.formValueInternationalInformation.value.pais;
+    formularioInscripcion.cuidad = this.ciudad.nombre;
+    formularioInscripcion.fechaSalida = this.formValueInternationalInformation.value.fechaSalida;
+    formularioInscripcion.fechaRegreso = this.formValueInternationalInformation.value.fechaRegreso;
+    formularioInscripcion.duracionPrograma = this.formValueInternationalInformation.value.duracionPrograma;
+    formularioInscripcion.fuenteFinanciacion = this.formValueInternationalInformation.value.fuenteFinanciacion;
     console.log("ingresó al metodo crear " + formularioInscripcion);
-    this.formularioInscripcionService.crearFormularioInscripcion(formularioInscripcion).
-    subscribe(e=> 
-      {alert("Datos estudiante ingresados exitosamente.");
-        console.log('esta es la respuesta que ud esta retornnado desde java');
-        console.log(e);
-      });
+    this.formularioInscripcionService.crearFormularioInscripcion(formularioInscripcion)
+      .subscribe(res => {
+        alert("Datos estudiante ingresados exitosamente.");
+        let ref = document.getElementById('cancelar')
+        ref?.click();
+      })
   }
 
 }
