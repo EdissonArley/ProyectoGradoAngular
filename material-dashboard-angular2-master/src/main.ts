@@ -5,6 +5,10 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import 'hammerjs';
 
+import Amplify from "aws-amplify";
+import aws_exports from "./aws-exports";
+Amplify.configure(aws_exports);
+
 if (environment.production) {
   enableProdMode();
 }

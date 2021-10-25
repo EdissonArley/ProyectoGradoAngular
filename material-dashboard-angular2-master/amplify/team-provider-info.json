@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-intercambio-dev-133826-authRole",
+      "UnauthRoleArn": "arn:aws:iam::979531503312:role/amplify-intercambio-dev-133826-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::979531503312:role/amplify-intercambio-dev-133826-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-intercambio-dev-133826-deployment",
+      "UnauthRoleName": "amplify-intercambio-dev-133826-unauthRole",
+      "StackName": "amplify-intercambio-dev-133826",
+      "StackId": "arn:aws:cloudformation:us-east-1:979531503312:stack/amplify-intercambio-dev-133826/958c6570-34f9-11ec-971d-0e933c830599",
+      "AmplifyAppId": "d3189nqm3bf0wm"
+    },
+    "categories": {
+      "auth": {
+        "intercambio1d6b69cd": {}
+      }
+    }
+  }
+}
