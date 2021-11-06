@@ -1,8 +1,9 @@
+import { RectorProfileComponent } from './../../rector-profile/rector-profile.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AdminLayoutRoutes } from './admin-layout.routing';
+import { AdminLayout } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { FormsComponent } from '../../forms/forms.component';
@@ -21,8 +22,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 @NgModule({
   imports: [
     CommonModule,
-    //AdminLayout,
-    RouterModule.forChild(AdminLayoutRoutes),
+    AdminLayout,
+    //RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -42,6 +43,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     TableListComponent,
     NotificationsComponent,
     DepartamentoComponent,
+    RectorProfileComponent,
   ]
 })
 

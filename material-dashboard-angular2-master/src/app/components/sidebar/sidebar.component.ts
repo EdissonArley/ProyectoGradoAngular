@@ -8,14 +8,7 @@ declare interface RouteInfo {
     icon: string;
     class: string;
 }
-export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'Perfil',  icon:'person', class: '' },
-    { path: '/forms', title: 'Formularios',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Consultas',  icon:'content_paste', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/departamento', title: 'Departamento', icon: 'notifications', class: ''},
-];
+export const ROUTES: RouteInfo[] = [];
 
 @Component({
   selector: 'app-sidebar',
@@ -24,20 +17,26 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  tipoUsuario: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.tipoUsuario = localStorage.getItem('tipoUsuario');
+    console.log('Tipo de usuario es ' + this.tipoUsuario);
+    if(this.tipoUsuario === 'rector'){
+      ROUTES.push({ path: 'rector-profile', title: 'Perfil', icon: 'person', class: ''});
+    }else if (this.tipoUsuario === 'estudiante'){  
+         ROUTES.push({ path: 'dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' });
+    ROUTES.push({ path: 'user-profile', title: 'Perfil',  icon:'person', class: '' });
+    ROUTES.push({ path: 'forms', title: 'Formularios',  icon:'person', class: '' });
+    ROUTES.push({ path: 'table-list', title: 'Consultas',  icon:'content_paste', class: '' });
+  
+  } else if(this.tipoUsuario === 'secretaria'){
+    ROUTES.push({ path: 'notifications', title: 'Notifications',  icon:'notifications', class: '' });
+    ROUTES.push({ path: 'departamento', title: 'Departamento', icon: 'notifications', class: ''});
+  }
     this.menuItems = ROUTES.filter(menuItem => menuItem);
-    onAuthUIStateChange((nextAuthState, authData) => {
-      if (nextAuthState === AuthState.SignedIn) {
-        console.log("user successfully signed in!");
-        console.log("user data: ", authData);
-      }
-      if (!authData) {
-        console.log("user is not signed in...");
-      }
-    });
   }
   isMobileMenu() {
       if ($(window).width() > 991) {

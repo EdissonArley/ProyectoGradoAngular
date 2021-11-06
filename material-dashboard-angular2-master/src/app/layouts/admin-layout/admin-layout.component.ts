@@ -20,13 +20,15 @@ export class AdminLayoutComponent implements OnInit {
   constructor( public location: Location, private router: Router) {}
 
   ngOnInit() {
+      console.log('Entra en pages');
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
       if (isWindows && !document.getElementsByTagName('body')[0].classList.contains('sidebar-mini')) {
           // if we are on windows OS we activate the perfectScrollbar function
-
+          console.log('paso#1');
           document.getElementsByTagName('body')[0].classList.add('perfect-scrollbar-on');
       } else {
+        console.log('pas#2');
           document.getElementsByTagName('body')[0].classList.remove('perfect-scrollbar-off');
       }
       const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
@@ -37,6 +39,7 @@ export class AdminLayoutComponent implements OnInit {
       });
        this.router.events.subscribe((event:any) => {
           if (event instanceof NavigationStart) {
+            console.log('pas#3');
              if (event.url != this.lastPoppedUrl)
                  this.yScrollStack.push(window.scrollY);
          } else if (event instanceof NavigationEnd) {
@@ -129,6 +132,7 @@ export class AdminLayoutComponent implements OnInit {
       });
   }
   ngAfterViewInit() {
+      console.log('aca si entra');
       this.runOnRouteChange();
   }
   isMaps(path){

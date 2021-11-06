@@ -1,6 +1,7 @@
 import { AdminLayoutComponent } from './admin-layout.component';
 import { RouterModule, Routes } from '@angular/router';
 
+import { RectorProfileComponent } from './../../rector-profile/rector-profile.component';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { FormsComponent } from '../../forms/forms.component';
@@ -9,14 +10,25 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { DepartamentoComponent } from './../../departamento/departamento.component';
 import { NgModule } from '@angular/core';
 
-export const AdminLayoutRoutes: Routes = [
+const routes: Routes = [{
+  path: '',
+  component: AdminLayoutComponent,
+  children: [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'forms',          component: FormsComponent },
     { path: 'table-list',     component: TableListComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'departamento',   component: DepartamentoComponent},
-];
+    { path: 'rector-profile',   component: RectorProfileComponent},
+  ],
+}];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class AdminLayout { }
 
 /*const routes: Routes = [
     {

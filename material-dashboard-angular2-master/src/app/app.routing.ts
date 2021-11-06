@@ -5,32 +5,25 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AppComponent } from './app.component';
 
-const routes: Routes =[
-  /*{                                          // removed square bracket
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },{
-     path: 'login',
-     component: LoginComponent
-  },*/
+
+
+const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent
-  },{
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    component: AppComponent,
+    children: [
+     {
+       path: 'login',
+       component: LoginComponent
+     },
+     {
+       path:  'pages',
+       loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(mod => mod.AdminLayoutModule),
+     },
+    ],
   },
-   {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-    }]
-  }
 ];
 
 @NgModule({
