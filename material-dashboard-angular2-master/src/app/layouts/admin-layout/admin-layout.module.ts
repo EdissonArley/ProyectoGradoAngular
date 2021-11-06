@@ -16,10 +16,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+//import { AdminLayout } from './admin-layout.routing';
 
 @NgModule({
   imports: [
     CommonModule,
+    //AdminLayout,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,

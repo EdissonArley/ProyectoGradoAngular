@@ -29,6 +29,12 @@
                           <div class="ripple-container"></div>
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a mat-button class="nav-link" href="#files" data-toggle="tab">
+                          <i class="material-icons">code</i> Cargar Archivos
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -279,6 +285,53 @@
                       </form>
                     </div>
                   </div>
+                  <div class="tab-pane" id="files">
+                    <div class="card-body">
+                      <form [formGroup]="formValueFiles">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <mat-label>Cargar archivos: </mat-label><div *ngIf="currentFile" class="progress">
+                              <div
+                                class="progress-bar progress-bar-info progress-bar-striped"
+                                role="progressbar"
+                                attr.aria-valuenow="{{ progress }}"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                [ngStyle]="{ width: progress + '%' }"
+                              >
+                                {{ progress }}%
+                              </div>
+                            </div>
+                            
+                            <label class="btn btn-default">
+                              <input type="file" (change)="selectFile($event)" />
+                            </label>
+                            
+                            <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+                              Upload
+                            </button>
+                            
+                            <div class="alert alert-light" role="alert">{{ message }}</div>
+                            
+                            <div class="card">
+                              <div class="card-header">Lista de archivos cargados:</div>
+                              <ul
+                                class="list-group list-group-flush"
+                                *ngFor="let file of fileInfos | async"
+                              >
+                                <li class="list-group-item">
+                                  <a href="{{ file.url }}">{{ file.name }}</a>
+                                </li>
+                              </ul>
+                            </div>                             
+                          </div>
+                        </div>
+                        <!--<button mat-raised-button type="submit" class="btn btn-danger pull-right" data-toggle="modal"
+                          data-target="#exampleModalFile">Cargar</button>-->
+                        <div class="clearfix"></div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -299,6 +352,24 @@
               <button type="button" id="cancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
               <button (click)="crearFormularioInscripcion()" mat-raised-button type="button"
                 class="btn btn-danger pull-right">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="exampleModalFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¡Confirmación de archivos!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <!--<button type="button" id="cancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button (click)="subirArchivo()" mat-raised-button type="button"
+                class="btn btn-danger pull-right">Confirmar</button>-->
             </div>
           </div>
         </div>

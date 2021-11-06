@@ -1,3 +1,5 @@
+import { Amplify } from 'aws-amplify';
+import { DocumentoService } from './../service/documento.service';
 import { CiudadService } from './../service/ciudad.service';
 import { FormularioInscripcionService } from './../service/formulario-inscripcion.service';
 import { FormularioInscripcion } from 'app/model/formulario-inscripcion';
@@ -12,6 +14,12 @@ import { ProgramaAcademicoService } from 'app/service/programa-academico.service
 import { QueryByStudentService } from 'app/service/query-by-student.service';
 import { Facultad } from 'app/model/facultad';
 import { Ciudad } from 'app/model/ciudad';
+import { Documento } from 'app/model/documento';
+import { UploadFileService } from 'app/service/upload-file.service';
+
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forms',
@@ -25,6 +33,7 @@ export class FormsComponent implements OnInit {
   formValuePersonalInformation !: FormGroup;
   formValueAcademicInformation !: FormGroup;
   formValueInternationalInformation !: FormGroup;
+  formValueFiles !: FormGroup;
   programaAcademico: ProgramaAcademico;
   programasAcademico: ProgramaAcademico[];
   estados: Estado[];
@@ -63,12 +72,35 @@ export class FormsComponent implements OnInit {
   duracionPrograma: String;
   fuenteFinanciacion: String;
 
+  cartaMotivacion : Blob;
+  hojaDeVida : Blob;
+  cartaAutorizacion : Blob;
+  cartaCertificado : Blob;
+  cartaInforme : Blob;
+  cartaHomologacion : Blob;
+  cartaAutorizacionDirector : Blob;
+  cartaAceptacionEmpresa : Blob;
+  cartaAceptacionIdiomas : Blob;
+  cartaAceptacionPonencia : Blob;
+  cartaAutorizacionDecano : Blob;
+  cartaInvitacion : Blob;
+
+  selectedFiles: FileList;
+  currentFile: File;
+  progress = 0;
+  message = '';
+
+  fileInfos: Observable<any>;
+
   constructor(private formBuilder: FormBuilder, private queryByStudentService: QueryByStudentService,
     private programaAcademicoService: ProgramaAcademicoService, private estadoService: EstadoService,
     private facultadService: FacultadService, private ciudadService: CiudadService, 
-    private formularioInscripcionService: FormularioInscripcionService) { }
+    private formularioInscripcionService: FormularioInscripcionService, private documentoService: DocumentoService,
+    private uploadService: UploadFileService) { }
 
   ngOnInit(): void {
+
+    this.fileInfos = this.uploadService.getFiles();
 
     this.programaAcademicoService.traerProgramaAcademico().subscribe(e => {
       console.log(e);
@@ -130,6 +162,21 @@ export class FormsComponent implements OnInit {
       fuenteFinanciacion: [''],
     })
 
+    this.formValueFiles = this.formBuilder.group({
+      cartaMotivacion : [''],
+      hojaDeVida : [''],
+      cartaAutorizacion : [''],
+      cartaCertificado : [''],
+      cartaInforme : [''],
+      cartaHomologacion : [''],
+      cartaAutorizacionDirector : [''],
+      cartaAceptacionEmpresa : [''],
+      cartaAceptacionIdiomas : [''],
+      cartaAceptacionPonencia : [''],
+      cartaAutorizacionDecano : [''],
+      cartaInvitacion : [''],
+    })
+
     this.queryByStudentService.traerDocumentoByEstudiante(1).subscribe(e => {
       this.queryByStudent = e
       this.formValuePersonalInformation.get('nombreCompleto').setValue(e.nombre);
@@ -187,5 +234,55 @@ export class FormsComponent implements OnInit {
         ref?.click();
       })
   }
+
+  selectFile(event): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    this.progress = 0;
+  
+    this.currentFile = this.selectedFiles.item(0);
+    console.log("ingresó al método cargar archivos" + this.currentFile);
+    this.uploadService.save(this.currentFile).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          this.fileInfos = this.uploadService.getFiles();
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'No se pudo cargar el archivo!';
+        this.currentFile = undefined;
+      });
+    this.selectedFiles = undefined;
+  }
+
+  /*capturarFile(event): any{
+    const archivoCapturado = event.target.file[0];
+    this.archivos.push(archivoCapturado);
+  }
+
+  subirArchivo(): any {
+      const documento : Documento = new Documento();
+      documento.cartaMotivacion = this.formValueFiles.value.cartaMotivacion;
+
+      console.log("ingresó al metodo crear documento" + documento);
+      this.documentoService.crearDocumento(documento)
+        .subscribe(res => {
+          alert("Documentos estudiante ingresados exitosamente.");
+          let ref = document.getElementById('cancelar')
+          ref?.click();
+        })
+
+      /*this.archivos.array.forEach(this.archivos => {
+        console.log(archivos);
+        formularioDeDatos.append('files', archivos)
+      })
+      this.rest.post
+  }*/
 
 }

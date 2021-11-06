@@ -7,6 +7,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes =[
+  /*{                                          // removed square bracket
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },{
+     path: 'login',
+     component: LoginComponent
+  },*/
   {
     path: 'login',
     component: LoginComponent

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthState, onAuthUIStateChange} from "@aws-amplify/ui-components";
 
 declare const $: any;
 declare interface RouteInfo {
@@ -28,6 +29,15 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    onAuthUIStateChange((nextAuthState, authData) => {
+      if (nextAuthState === AuthState.SignedIn) {
+        console.log("user successfully signed in!");
+        console.log("user data: ", authData);
+      }
+      if (!authData) {
+        console.log("user is not signed in...");
+      }
+    });
   }
   isMobileMenu() {
       if ($(window).width() > 991) {
