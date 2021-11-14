@@ -212,7 +212,7 @@ export class SecretariaFormsComponent implements OnInit {
       this.formValuePersonalInformation.get('nombreAcudiente').setValue(e.nombreAcudiente);
       this.formValuePersonalInformation.get('telefonoAcudiente').setValue(e.telefonoAcudiente);
       this.formValuePersonalInformation.get('parentesco').setValue(e.parentesco);
-      this.formValuePersonalInformation.get('nacionalidad').setValue(e.nacionalidad); 
+      this.formValuePersonalInformation.get('nacionalidad').setValue(e.nacionalidad);
       this.formValuePersonalInformation.get('fechaNacimiento').setValue(e.fechaNacimiento);
       this.formValuePersonalInformation.get('sexo').setValue(e.sexo);
       this.formValuePersonalInformation.get('estadoCivil').setValue(e.estadoCivil);
@@ -258,7 +258,7 @@ export class SecretariaFormsComponent implements OnInit {
     formularioInscripcion.codigo = this.formValueAcademicInformation.value.codigo;
     formularioInscripcion.programaAcademico = this.formValueAcademicInformation.value.programaAcademico;
     formularioInscripcion.semestreAcademico = this.formValueAcademicInformation.value.semestreAcademico;
-    formularioInscripcion.jornada = this.formValueAcademicInformation.value.jornada;    
+    formularioInscripcion.jornada = this.formValueAcademicInformation.value.jornada;
     formularioInscripcion.estado = this.estado.nombre;
     formularioInscripcion.promedioAcumulado = this.formValueAcademicInformation.value.promedioAcumulado;
     formularioInscripcion.idiomas = this.formValueAcademicInformation.value.idiomas;
@@ -279,97 +279,116 @@ export class SecretariaFormsComponent implements OnInit {
       })
   }
 
-updateFormularioInscripcion(): void {
-  const formularioInscripcion: FormularioInscripcion = new FormularioInscripcion();
-  formularioInscripcion.nombreCompleto = this.formValuePersonalInformation.value.nombreCompleto;
-  formularioInscripcion.apellidos = this.formValuePersonalInformation.value.apellidos;
-  formularioInscripcion.nacionalidad = this.formValuePersonalInformation.value.nacionalidad;
-  formularioInscripcion.documentoIdentificacion = this.formValuePersonalInformation.value.documentoIdentificacion;
-  formularioInscripcion.fechaNacimiento = this.formValuePersonalInformation.value.fechaNacimiento;
-  formularioInscripcion.sexo = this.formValuePersonalInformation.value.sexo;
-  formularioInscripcion.tipoSangre = this.formValuePersonalInformation.value.tipoSangre;
-  formularioInscripcion.rh = this.formValuePersonalInformation.value.rh;
-  formularioInscripcion.direccionResidencia = this.formValuePersonalInformation.value.direccionResidencia;
-  formularioInscripcion.telefono = this.formValuePersonalInformation.value.telefono;
-  formularioInscripcion.estadoCivil = this.formValuePersonalInformation.value.estadoCivil;
-  formularioInscripcion.numeroPasaporte = this.formValuePersonalInformation.value.numeroPasaporte;
-  formularioInscripcion.celular = this.formValuePersonalInformation.value.celular;
-  formularioInscripcion.nombreAcudiente = this.formValuePersonalInformation.value.nombreAcudiente;
-  formularioInscripcion.telefonoAcudiente = this.formValuePersonalInformation.value.telefonoAcudiente;
-  formularioInscripcion.parentesco = this.formValuePersonalInformation.value.parentesco;
-  formularioInscripcion.facultad = this.formValueAcademicInformation.value.facultad;
-  formularioInscripcion.codigo = this.formValueAcademicInformation.value.codigo;
-  formularioInscripcion.programaAcademico = this.formValueAcademicInformation.value.programaAcademico;
-  formularioInscripcion.semestreAcademico = this.formValueAcademicInformation.value.semestreAcademico;
-  formularioInscripcion.jornada = this.formValueAcademicInformation.value.jornada;
-  formularioInscripcion.estado = this.estado.nombre;
-  formularioInscripcion.promedioAcumulado = this.formValueAcademicInformation.value.promedioAcumulado;
-  formularioInscripcion.idiomas = this.formValueAcademicInformation.value.idiomas;
-  formularioInscripcion.institucionExterior = this.formValueInternationalInformation.value.institucionExterior;
-  formularioInscripcion.pais = this.formValueInternationalInformation.value.pais;
-  formularioInscripcion.cuidad = this.formValueInternationalInformation.value.cuidad;
-  formularioInscripcion.fechaSalida = this.formValueInternationalInformation.value.fechaSalida;
-  formularioInscripcion.fechaRegreso = this.formValueInternationalInformation.value.fechaRegreso;
-  formularioInscripcion.duracionPrograma = this.formValueInternationalInformation.value.duracionPrograma;
-  formularioInscripcion.fuenteFinanciacion = this.formValueInternationalInformation.value.fuenteFinanciacion;
-  formularioInscripcion.comentarios = this.formValueInternationalInformation.value.comentarios;
-  console.log("ingresó al metodo update formulario " + formularioInscripcion + formularioInscripcion.formularioId);
-  this.formularioInscripcionService.updateFormularioInscripcion(formularioInscripcion, formularioInscripcion.formularioId)
-    .subscribe(res => {
-      alert("Comentario ingresado exitosamente.");
-      let ref = document.getElementById('cancelar')
-      ref?.click();
-    })
-}
-
-selectFile(event): void {
-  this.selectedFiles = event.target.files;
-}
-
-upload(): void {
-  this.progress = 0;
-
-  this.currentFile = this.selectedFiles.item(0);
-  console.log("ingresó al método cargar archivos" + this.currentFile);
-  this.uploadService.save(this.currentFile).subscribe(
-    event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        this.message = event.body.message;
-        this.fileInfos = this.uploadService.getFiles();
-      }
-    },
-    err => {
-      this.progress = 0;
-      this.message = 'No se pudo cargar el archivo!';
-      this.currentFile = undefined;
-    });
-  this.selectedFiles = undefined;
-}
-
-  /*capturarFile(event): any{
-    const archivoCapturado = event.target.file[0];
-    this.archivos.push(archivoCapturado);
+  updateFormularioInscripcion(): void {
+    const formularioInscripcion: FormularioInscripcion = new FormularioInscripcion();
+    formularioInscripcion.nombreCompleto = this.formValuePersonalInformation.value.nombreCompleto;
+    formularioInscripcion.apellidos = this.formValuePersonalInformation.value.apellidos;
+    formularioInscripcion.nacionalidad = this.formValuePersonalInformation.value.nacionalidad;
+    formularioInscripcion.documentoIdentificacion = this.formValuePersonalInformation.value.documentoIdentificacion;
+    formularioInscripcion.fechaNacimiento = this.formValuePersonalInformation.value.fechaNacimiento;
+    formularioInscripcion.sexo = this.formValuePersonalInformation.value.sexo;
+    formularioInscripcion.tipoSangre = this.formValuePersonalInformation.value.tipoSangre;
+    formularioInscripcion.rh = this.formValuePersonalInformation.value.rh;
+    formularioInscripcion.direccionResidencia = this.formValuePersonalInformation.value.direccionResidencia;
+    formularioInscripcion.telefono = this.formValuePersonalInformation.value.telefono;
+    formularioInscripcion.estadoCivil = this.formValuePersonalInformation.value.estadoCivil;
+    formularioInscripcion.numeroPasaporte = this.formValuePersonalInformation.value.numeroPasaporte;
+    formularioInscripcion.celular = this.formValuePersonalInformation.value.celular;
+    formularioInscripcion.nombreAcudiente = this.formValuePersonalInformation.value.nombreAcudiente;
+    formularioInscripcion.telefonoAcudiente = this.formValuePersonalInformation.value.telefonoAcudiente;
+    formularioInscripcion.parentesco = this.formValuePersonalInformation.value.parentesco;
+    formularioInscripcion.facultad = this.formValueAcademicInformation.value.facultad;
+    formularioInscripcion.codigo = this.formValueAcademicInformation.value.codigo;
+    formularioInscripcion.programaAcademico = this.formValueAcademicInformation.value.programaAcademico;
+    formularioInscripcion.semestreAcademico = this.formValueAcademicInformation.value.semestreAcademico;
+    formularioInscripcion.jornada = this.formValueAcademicInformation.value.jornada;
+    formularioInscripcion.estado = this.estado.nombre;
+    formularioInscripcion.promedioAcumulado = this.formValueAcademicInformation.value.promedioAcumulado;
+    formularioInscripcion.idiomas = this.formValueAcademicInformation.value.idiomas;
+    formularioInscripcion.institucionExterior = this.formValueInternationalInformation.value.institucionExterior;
+    formularioInscripcion.pais = this.formValueInternationalInformation.value.pais;
+    formularioInscripcion.cuidad = this.formValueInternationalInformation.value.cuidad;
+    formularioInscripcion.fechaSalida = this.formValueInternationalInformation.value.fechaSalida;
+    formularioInscripcion.fechaRegreso = this.formValueInternationalInformation.value.fechaRegreso;
+    formularioInscripcion.duracionPrograma = this.formValueInternationalInformation.value.duracionPrograma;
+    formularioInscripcion.fuenteFinanciacion = this.formValueInternationalInformation.value.fuenteFinanciacion;
+    formularioInscripcion.comentarios = this.formValueInternationalInformation.value.comentarios;
+    console.log("ingresó al metodo update formulario " + formularioInscripcion + formularioInscripcion.formularioId);
+    this.formularioInscripcionService.updateFormularioInscripcion(formularioInscripcion, formularioInscripcion.formularioId)
+      .subscribe(res => {
+        alert("Comentario ingresado exitosamente.");
+        let ref = document.getElementById('cancelar')
+        ref?.click();
+      })
   }
 
-  subirArchivo(): any {
-      const documento : Documento = new Documento();
-      documento.cartaMotivacion = this.formValueFiles.value.cartaMotivacion;
+  selectFile(event): void {
+    this.selectedFiles = event.target.files;
+  }
 
-      console.log("ingresó al metodo crear documento" + documento);
-      this.documentoService.crearDocumento(documento)
-        .subscribe(res => {
-          alert("Documentos estudiante ingresados exitosamente.");
-          let ref = document.getElementById('cancelar')
-          ref?.click();
-        })
+  upload(): void {
+    this.progress = 0;
 
-      /*this.archivos.array.forEach(this.archivos => {
-        console.log(archivos);
-        formularioDeDatos.append('files', archivos)
-      })
-      this.rest.post
+    this.currentFile = this.selectedFiles.item(0);
+    console.log("ingresó al método cargar archivos" + this.currentFile);
+    this.uploadService.save(this.currentFile).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          this.fileInfos = this.uploadService.getFiles();
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'No se pudo cargar el archivo!';
+        this.currentFile = undefined;
+      });
+    this.selectedFiles = undefined;
+  }
+
+  downloadFile() {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', '_File_Saved_Path');
+    link.setAttribute('download', 'file_name.pdf');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+  download(): void {
+    const fileName = `reporte_${Math.random()}.pdf`;
+
+    this.uploadService.getFiles().subscribe(response => {
+      this.managePDFfile(response, fileName);
+    });
+  }
+  
+  /*download(): void {
+    const fileName = '';
+    let list: Array<Object>;
+    //const fileName = `reporte_${Math.random()}.pdf`;
+
+    this.fileInfos.subscribe((fileName) => list.push(Object.values(fileName)));
+    
+    console.log("prueba lista" + Object.values(fileName[0]))
+    this.uploadService.getFiles().subscribe(response => {
+      this.managePDFfile(response, fileName);
+    });
   }*/
 
+  managePDFfile(response: any, fileName: string): void {
+    const dataType = response.Type;
+    const binaryData = [];
+    binaryData.push(response);
+
+    const filtePath = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
+    const downloadLink = document.createElement('a');
+    downloadLink.href = filtePath;
+    downloadLink.setAttribute('download',fileName);
+    document.body.appendChild(downloadLink);
+    downloadLink.click()
+  }
 }
