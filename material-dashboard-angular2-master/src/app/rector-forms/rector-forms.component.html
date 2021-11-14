@@ -1,0 +1,341 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-lg-11 col-md-10">
+              <div class="card">
+                <div class="card-header card-header-tabs card-header-danger">
+                  <div class="nav-tabs-navigation">
+                    <h4 class="card-title">PROGRAMA INTERNACIONAL DE MOVILIDAD ESTUDIANTIL SALIENTE</h4>
+                    <div class="nav-tabs-wrapper">
+                      <span class="nav-tabs-title"> </span>
+                      <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                          <a mat-button class="nav-link active" href="#profile" data-toggle="tab">
+                            <em class="material-icons">bug_report</em> DATOS PERSONALES
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a mat-button class="nav-link" href="#infoAcademica" data-toggle="tab">
+                            <em class="material-icons">code</em> INFORMACION ACADEMICA
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a mat-button class="nav-link" href="#settings" data-toggle="tab">
+                            <i class="material-icons">cloud</i> INFORMACIÓN MOVILIDAD INTERNACIONAL
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a mat-button class="nav-link" href="#files" data-toggle="tab">
+                            <i class="material-icons">code</i> VER ARCHIVOS
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="profile">
+                      <div class="card-body">
+                        <form [formGroup]="formValuePersonalInformation">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Nombre completo" formControlName="nombreCompleto"
+                                  type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Apellidos" formControlName="apellidos" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Nacionalidad" formControlName="nacionalidad" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Documento de identificación"
+                                  formControlName="documentoIdentificacion" type="number" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Fecha de nacimiento" formControlName="fechaNacimiento" type="datetime" readonly>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Sexo" formControlName="sexo" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-2">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Tipo de sangre" formControlName="tipoSangre" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-2">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="RH" formControlName="rh" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Dirección de residencia"
+                                  formControlName="direccionResidencia" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Teléfono" formControlName="telefono" type="number" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Estado civil" formControlName="estadoCivil" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="N Pasaporte" formControlName="numeroPasaporte" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Celular" formControlName="celular" type="number" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="En caso de emergencia llamar a"
+                                  formControlName="nombreAcudiente" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Teléfono Acudiente" formControlName="telefonoAcudiente"
+                                  type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Parentesco" formControlName="parentesco" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                            [disabled]="true">Cargar</button>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="infoAcademica">
+                      <div class="card-body">
+                        <form [formGroup]="formValueAcademicInformation">
+                          <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Facultad" formControlName="facultad" type="text" readonly>
+                                  </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Código" formControlName="codigo" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Programa Academico" formControlName="programaAcademico" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Sem. Académico" formControlName="semestreAcademico"
+                                  type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Jornada" formControlName="jornada" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field>
+                                <mat-select placeholder="Estado Trámite" [(ngModel)]="estado" name="estado"
+                                  [ngModelOptions]="{standalone: true}">
+                                  <mat-option *ngFor="let estado of estados" [value]="estado">
+                                    {{estado.nombre}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Promedio Acumulado" formControlName="promedioAcumulado"
+                                  type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Idiomas" formControlName="idiomas" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                            [disabled]="true">Cargar</button>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                      <div class="card-body">
+                        <form [formGroup]="formValueInternationalInformation">
+                          <div class="row">
+                            <div class="col-md-8">
+                              <mat-form-field class="example-full-width">
+                                <input matInput
+                                  placeholder="Institución en el exterior en donde desarrollará la actividad"
+                                  formControlName="institucionExterior" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Pais" formControlName="pais" type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Ciudad" formControlName="cuidad" type="text" readonly>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Fecha Salida" formControlName="fechaSalida" type="datetime" readonly>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Fecha Regreso" formControlName="fechaRegreso" type="datetime" readonly>
+                                </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Duración del programa" formControlName="duracionPrograma"
+                                  type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Fuente de financiación" formControlName="fuenteFinanciacion"
+                                  type="text" readonly>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <mat-form-field class="example-full-width">
+                                <input matInput
+                                  placeholder="Agregar comentarios o sugerencias"
+                                  formControlName="comentarios" type="text">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right" data-toggle="modal"
+                            data-target="#exampleModal">Cargar</button>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="files">
+                      <div class="card-body">
+                        <form [formGroup]="formValueFiles">
+                          <div class="row">
+                            <div class="col-md-12">                              
+                              <div class="card">
+                                <div class="card-header">Lista de archivos cargados:</div>
+                                <ul
+                                  class="list-group list-group-flush"
+                                  *ngFor="let file of fileInfos | async"
+                                >
+                                  <li class="list-group-item">
+                                    <a href="{{ file.url }}">{{ file.name }}</a>
+                                  </li>
+                                </ul>
+                              </div>                             
+                            </div>
+                          </div>
+                          <!--<button mat-raised-button type="submit" class="btn btn-danger pull-right" data-toggle="modal"
+                            data-target="#exampleModalFile">Cargar</button>-->
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¡Confirmación registo!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="cancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button (click)="crearFormularioInscripcion()" mat-raised-button type="button"
+                  class="btn btn-danger pull-right">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="exampleModalFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¡Confirmación de archivos!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <!--<button type="button" id="cancelar" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button (click)="subirArchivo()" mat-raised-button type="button"
+                  class="btn btn-danger pull-right">Confirmar</button>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

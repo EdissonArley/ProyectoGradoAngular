@@ -9,6 +9,9 @@ import { TableListComponent } from '../../table-list/table-list.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { DepartamentoComponent } from './../../departamento/departamento.component';
 import { NgModule } from '@angular/core';
+import { RectorFormsComponent } from 'app/rector-forms/rector-forms.component';
+import { SecretariaFormsComponent } from 'app/secretaria-forms/secretaria-forms.component';
+import { SecretariaProfileComponent } from 'app/secretaria-profile/secretaria-profile.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,6 +24,9 @@ const routes: Routes = [{
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'departamento',   component: DepartamentoComponent},
     { path: 'rector-profile',   component: RectorProfileComponent},
+    { path: 'rector-forms',   component: RectorFormsComponent},
+    { path: 'secretaria-forms',   component: SecretariaFormsComponent},
+    { path: 'secretaria-profile',   component: SecretariaProfileComponent},
   ],
 }];
 

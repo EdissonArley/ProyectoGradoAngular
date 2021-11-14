@@ -16,4 +16,13 @@ export class FormularioInscripcionService {
     console.log(formularioInscripcion);
     return this.httpClient.post<FormularioInscripcion>(this.url,formularioInscripcion)
   }
+
+  traerFormularioById(idFormulario : number): Observable<FormularioInscripcion>{
+    return this.httpClient.get<FormularioInscripcion>(this.url + "/" + idFormulario)
+  }
+
+  updateFormularioInscripcion(data: any, idFormulario: number): Observable<FormularioInscripcion>{
+    console.log(data);
+    return this.httpClient.patch<FormularioInscripcion>(this.url + "/updateFormulario/" + idFormulario, data)
+  }
 }

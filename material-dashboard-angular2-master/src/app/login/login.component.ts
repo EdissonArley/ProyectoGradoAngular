@@ -20,16 +20,16 @@ export class LoginComponent implements OnInit {
         console.log('Ingreso....');
         this.user = authData as CognitoUserInterface;
         console.log(this.user['attributes'].email);
-        if((this.user['attributes'].email.includes('disson'))){
+        if((this.user['attributes'].email.includes('Rector'))){
           console.log('seta valor');
           localStorage.setItem('tipoUsuario', 'rector');
         }
 
-        if((this.user['attributes'].email.includes('estudiante'))){
+        if((this.user['attributes'].email.includes('Edisson'))){
           localStorage.setItem('tipoUsuario', 'estudiante');
         }
 
-        if((this.user['attributes'].email.includes('secretaria'))){
+        if((this.user['attributes'].email.includes('Secretaria'))){
           localStorage.setItem('tipoUsuario', 'secretaria');
         }
         console.log(this.user['attributes'].email.includes('rector'));

@@ -32,4 +32,5 @@ export class FormularioInscripcion {
     public duracionPrograma : String;
     public fuenteFinanciacion : String;
     public estado : String;
+    public comentarios : String;
 }

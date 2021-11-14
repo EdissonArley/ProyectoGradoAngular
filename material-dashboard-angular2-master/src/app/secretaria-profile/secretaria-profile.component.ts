@@ -11,13 +11,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TipoDocumento } from 'app/model/tipo-documento';
 import { Ciudad } from 'app/model/ciudad';
 
+
 @Component({
-  selector: 'app-rector-profile',
-  templateUrl: './rector-profile.component.html',
-  styleUrls: ['./rector-profile.component.css']
+  selector: 'app-secretaria-profile',
+  templateUrl: './secretaria-profile.component.html',
+  styleUrls: ['./secretaria-profile.component.css']
 })
 
-export class RectorProfileComponent implements OnInit {
+export class SecretariaProfileComponent implements OnInit {
 
   usuario: Usuario;
   estudiante: Estudiante;
@@ -29,8 +30,6 @@ export class RectorProfileComponent implements OnInit {
   ciudades: Ciudad[];
   programaAcademico: ProgramaAcademico;
   programasAcademico: ProgramaAcademico[];
-
-
 
   constructor(private tipoDocumentoService: TipoDocumentoService, private ciudadService: CiudadService, private programaAcademicoService: ProgramaAcademicoService,
     private queryByStudentService: QueryByStudentService, private formBuilder: FormBuilder) { }
@@ -71,7 +70,7 @@ export class RectorProfileComponent implements OnInit {
       parentescoAcudiente: ['']
     })
 
-    this.queryByStudentService.traerDocumentoByEstudiante(2).subscribe(e => {
+    this.queryByStudentService.traerDocumentoByEstudiante(3).subscribe(e => {
       this.queryByStudent = e
       this.formValue.get('nombre').setValue(e.nombre);
       this.formValue.get('apellido').setValue(e.apellido);
@@ -93,7 +92,7 @@ export class RectorProfileComponent implements OnInit {
     });
   }
 
-  updateRector() {
+  updateSecretaria() {
     console.log('Este es el nombre'+ this.formValue.value.nombre);
     this.queryByStudent.nombre = this.formValue.value.nombre;
     this.queryByStudent.apellido = this.formValue.value.apellido;
@@ -113,10 +112,11 @@ export class RectorProfileComponent implements OnInit {
     this.queryByStudent.parentescoAcudiente = this.formValue.value.parentescoAcudiente;*/
     this.queryByStudentService.patchEstudiante(this.queryByStudent, this.queryByStudent.id)
       .subscribe(res => {
-        alert("Datos rector actualizados exitosamente.");
+        alert("Datos secretaria actualizados exitosamente.");
         let ref = document.getElementById('cancelar')
         ref?.click();
       })
   }
 
 }
+
